@@ -15,7 +15,7 @@ By the end of this course, students should be able to:
 
 -  Apply a workflow when using a version control system such as [Git][]
 -  Develop a simple Web application using Java programming language and Spring
-   Boot framework backed with a relational database (e.g. PostgreSQL) for data
+   Boot framework backed by a relational database (e.g. PostgreSQL) for data
    persistence
 -  Create tests for verifying the Web application in different levels, such as
    unit test, integration test, and functional test
@@ -24,8 +24,8 @@ By the end of this course, students should be able to:
 
 ## Target Audience
 
-While the course is designed for fresh graduates with background in computing,
-students coming from different background can read and follow the course. At
+While the course is designed for fresh graduates with a background in computing,
+students coming from a different background can read and attend the course. At
 minimum, you need to:
 
 -  Have some experiences in programming, preferably using an object-oriented
@@ -46,15 +46,15 @@ development tools:
    -  Download JDK from [Adoptium][]
    -  At the time of writing, the latest LTS version is **17**
 -  [IntelliJ IDEA Community Edition by JetBrains][]
-   -  While you can use other text editor (e.g. Visual Studio Code) or IDE such
+   -  While you can use other text editors (e.g. Visual Studio Code) or IDE such
       as Eclipse or NetBeans, we might not be able to troubleshoot any problems
       that come up during the course
 -  [PostgreSQL][] database system version 14
 
 In addition, you also need to have an account on the following online services:
 
--  [GitHub][], an online source code repository and project management system
--  [Fly.io][], a Platform-as-a-Service (PaaS) for deploying the Web application
+-  [GitHub][] an online source code repository and project management system
+-  [Fly.io][] a Platform-as-a-Service (PaaS) for deploying the Web application
    -  Install [`flyctl`](https://fly.io/docs/flyctl/) command-line tool as well
      
 ## License
