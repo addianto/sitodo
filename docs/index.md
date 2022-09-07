@@ -57,13 +57,12 @@ In addition, you also need to have an account on the following online services:
 -  [Fly.io][], a Platform-as-a-Service (PaaS) for deploying the Web application
    -  Install [`flyctl`](https://fly.io/docs/flyctl/) command-line tool as well
      
-
 ## License
 
 The learning materials in this course are licensed under Creative Commons
-Attribution-ShareAlike 4.0 International ([CC BY-SA 4.0](./LICENSE)). You can
-reuse, modify, distribute, and do pretty much anything with the course materials
-as long it is allowed under the terms of the license.
+Attribution-ShareAlike 4.0 ([CC BY-SA 4.0](./LICENSE)). You can reuse, modify,
+distribute, and do pretty much anything with the course materials as long it is
+allowed under the terms of the license.
 
 [Adoptium]: https://adoptium.net/
 [Fly.io]: https://fly.io
