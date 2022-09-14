@@ -24,9 +24,104 @@
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="/.">Sitodo</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/." class="dropdown-item">Course Overview</a>
+</li>
+                                    
+<li>
+    <a href="/toc/" class="dropdown-item">Table of Contents</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Course Setup <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/setup/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="/setup/environment.md" class="dropdown-item">Local Development Environment</a>
+</li>
+                                    
+<li>
+    <a href="/setup/scaffolding.md" class="dropdown-item">Project Scaffolding</a>
+</li>
+                                    
+<li>
+    <a href="/setup/github.md" class="dropdown-item">GitHub</a>
+</li>
+                                    
+<li>
+    <a href="/setup/fly.md" class="dropdown-item">Fly</a>
+</li>
+                                    
+<li>
+    <a href="/setup/ci.md" class="dropdown-item">GitHub Actions</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Implement Basic Feature <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/feature-1/index.md" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="/feature-1/tdd.md" class="dropdown-item">Test-Driven Development</a>
+</li>
+                                    
+<li>
+    <a href="/feature-1/functional-test.md" class="dropdown-item">Outside-in TDD 1 - Functional Test</a>
+</li>
+                                    
+<li>
+    <a href="/feature-1/unit-test-mock.md" class="dropdown-item">Outside-in TDD 2 - Unit Test in Mocked Environment</a>
+</li>
+                                    
+<li>
+    <a href="/feature-1/unit-test.md" class="dropdown-item">Outside-in TDD 3 - Pure Unit Test</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Quality Assurance & Automation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/qa/index.md" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="/qa/test.md" class="dropdown-item">Test Automation on GitHub Actions</a>
+</li>
+                                    
+<li>
+    <a href="/qa/codeql.md" class="dropdown-item">Code Quality</a>
+</li>
+                                    
+<li>
+    <a href="/qa/cicd.md" class="dropdown-item">Continuous Integration & Deployment</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
