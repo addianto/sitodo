@@ -37,16 +37,18 @@
 8. Make simple JUnit 5 unit tests pass
 9. Recap
 
-## Implement Web Form Authentication (Username & Password)
+## Implement Todo List
+<!-- Implement stateful feature: public todo list -->
+
+1. Create data persistence model using JPA
+2. Create data migration using Liquibase
+
+## Implement Personalised Todo List
+<!-- User authentication -->
 
 1. Security in Spring
-2. https://stackoverflow.com/questions/42148257/unit-testing-methods-using-principal-from-spring-secucrity?noredirect=1&lq=1
-3. Define user model
-4. Create database migration scripts (changelogs in Liquibase speak)
-5. Basic user view, start from tests (@MockMvc and basic unit tests)
-6. Implement basic user view, login, logout to pass the tests
-
-## Implement Todo List
-<!-- Implement stateful feature: todo list of a user -->
-
-1. TBD.
+   1. https://stackoverflow.com/questions/42148257/unit-testing-methods-using-principal-from-spring-secucrity?noredirect=1&lq=1
+2. Define user authentication model
+3. Update database schema via database migration
+4. Secure the existing todo list behind authentication
+   1. Implement basic user view, login, logout to pass the tests
