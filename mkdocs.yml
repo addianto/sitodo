@@ -1,6 +1,8 @@
 ---
 site_name: Sitodo
 site_url: https://sitodo-example.herokuapp.com
+theme:
+  name: readthedocs
 nav:
   - Home:
       - Course Overview: index.md
@@ -10,18 +12,23 @@ nav:
       - Local Development Environment: setup/environment.md
       - Project Scaffolding: setup/scaffolding.md
       - GitHub: setup/github.md
-      - Fly: setup/fly.md
-      - GitHub Actions: setup/ci.md
-  - Implement Basic Feature:  # Implement stateless feature: landing page
+      - Deploy to PaaS: setup/deploy.md
+  - TDD-style Hello, World:
       - Overview: feature-1/index.md
       - Test-Driven Development: feature-1/tdd.md
-      - Outside-in TDD 1 - Functional Test: feature-1/functional-test.md
-      - Outside-in TDD 2 - Unit Test in Mocked Environment: feature-1/unit-test-mock.md
-      - Outside-in TDD 3 - Pure Unit Test: feature-1/unit-test.md
+      - Unit Test: feature-1/unit-test.md
+      - Unit Test in Mocked Environment: feature-1/unit-test-mock.md
   - Quality Assurance & Automation:
       - Overview: qa/index.md
-      - Test Automation on GitHub Actions: qa/test.md
-      - Code Quality: qa/codeql.md
-      - Continuous Integration & Deployment: qa/cicd.md
-  - Todo List:  # Implement stateful feature: todo list
-      - Overview:
+      - Automate Test Execution using GitHub Actions: qa/test.md
+      - Automate Deployment using GitHub Actions: qa/deploy.md
+  - Implement Basic Feature:
+      - Overview: feature-2/index.md
+      - Data Persistence Layer: feature-2/data.md
+      - Business Logic Layer: feature-2/business.md
+      - Presentation Layer: feature-2/presentation.md
+  - Extra Challenges:
+      - Functional Test: extra/functional-test.md
+      - Analyse Code Quality: extra/codeql.md
+      - User Authentication: extra/auth.md
+      - PostgreSQL Database: extra/postgres.md
