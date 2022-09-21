@@ -198,3 +198,6 @@ replay_pid*
 
 # Custom ignore list
 .venv/
+
+# Static site
+site/
