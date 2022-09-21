@@ -1,192 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        <link rel="canonical" href="https://sitodo-example.herokuapp.com/toc/">
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Table of Contents - Sitodo</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="..">Sitodo</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href=".." class="dropdown-item">Course Overview</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">Table of Contents</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Course Setup <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../setup/" class="dropdown-item">Overview</a>
-</li>
-                                    
-<li>
-    <a href="../setup/environment.md" class="dropdown-item">Local Development Environment</a>
-</li>
-                                    
-<li>
-    <a href="../setup/scaffolding.md" class="dropdown-item">Project Scaffolding</a>
-</li>
-                                    
-<li>
-    <a href="../setup/github.md" class="dropdown-item">GitHub</a>
-</li>
-                                    
-<li>
-    <a href="../setup/fly.md" class="dropdown-item">Fly</a>
-</li>
-                                    
-<li>
-    <a href="../setup/ci.md" class="dropdown-item">GitHub Actions</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Implement Basic Feature <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../feature-1/index.md" class="dropdown-item">Overview</a>
-</li>
-                                    
-<li>
-    <a href="../feature-1/tdd.md" class="dropdown-item">Test-Driven Development</a>
-</li>
-                                    
-<li>
-    <a href="../feature-1/functional-test.md" class="dropdown-item">Outside-in TDD 1 - Functional Test</a>
-</li>
-                                    
-<li>
-    <a href="../feature-1/unit-test-mock.md" class="dropdown-item">Outside-in TDD 2 - Unit Test in Mocked Environment</a>
-</li>
-                                    
-<li>
-    <a href="../feature-1/unit-test.md" class="dropdown-item">Outside-in TDD 3 - Pure Unit Test</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Quality Assurance & Automation <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../qa/index.md" class="dropdown-item">Overview</a>
-</li>
-                                    
-<li>
-    <a href="../qa/test.md" class="dropdown-item">Test Automation on GitHub Actions</a>
-</li>
-                                    
-<li>
-    <a href="../qa/codeql.md" class="dropdown-item">Code Quality</a>
-</li>
-                                    
-<li>
-    <a href="../qa/cicd.md" class="dropdown-item">Continuous Integration & Deployment</a>
-</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../setup/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitodo-example.herokuapp.com/toc/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Table of Contents - Sitodo</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#course-setup" class="nav-link">Course Setup</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#project-scaffolding" class="nav-link">Project Scaffolding</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#implement-landing-page" class="nav-link">Implement Landing Page</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#implement-todo-list" class="nav-link">Implement Todo List</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#implement-personalised-todo-list" class="nav-link">Implement Personalised Todo List</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Table of Contents";
+        var mkdocs_page_input_path = "toc.md";
+        var mkdocs_page_url = "/toc/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
 
-<h1 id="table-of-contents">Table of Contents</h1>
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Sitodo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Home</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="..">Course Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Table of Contents</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#course-setup">Course Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-scaffolding">Project Scaffolding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implement-landing-page-hello-world">Implement Landing Page (Hello, World)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quality-assurance-test-automation">Quality Assurance &amp; Test Automation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implement-todo-list">Implement Todo List</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extra-challenge-personalised-todo-list-with-authentication">Extra Challenge: Personalised Todo List with Authentication</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extra-challenge-postgresql-database">Extra Challenge: PostgreSQL Database</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Course Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../setup/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../setup/environment.md">Local Development Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../setup/scaffolding.md">Project Scaffolding</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../setup/github.md">GitHub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../setup/deploy.md">Deploy to PaaS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TDD-style Hello, World</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../feature-1/index.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-1/tdd.md">Test-Driven Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-1/unit-test.md">Unit Test</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-1/unit-test-mock.md">Unit Test in Mocked Environment</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Quality Assurance & Automation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../qa/index.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../qa/test.md">Automate Test Execution using GitHub Actions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../qa/deploy.md">Automate Deployment using GitHub Actions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Implement Basic Feature</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../feature-2/index.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-2/data.md">Data Persistence Layer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-2/business.md">Business Logic Layer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../feature-2/presentation.md">Presentation Layer</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra Challenges</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../extra/functional-test.md">Functional Test</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../extra/codeql.md">Analyse Code Quality</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../extra/auth.md">User Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../extra/postgres.md">PostgreSQL Database</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Sitodo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Home &raquo;</li>
+      <li>Table of Contents</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="table-of-contents">Table of Contents</h1>
 <h2 id="course-setup">Course Setup</h2>
 <ol>
 <li>Install Git</li>
@@ -194,11 +150,9 @@
       and install EditorConfig</li>
 <li>Install Java</li>
 <li>Ensure JAVA_HOME and PATH configured properly</li>
-<li>Install PostgreSQL</li>
-<li>Set up database from 0, i.e. <code>CREATE DATABASE</code>, <code>CREATE ROLE</code>, etc.</li>
 <li>Install IDE (IntelliJ)</li>
 <li>Set up GitHub account</li>
-<li>Set up Fly.io account and install <code>flyctl</code></li>
+<li>Set up Heroku / Fly.io account</li>
 <li>At the end, verify all tools have been installed, e.g. <code>git --version</code></li>
 </ol>
 <h2 id="project-scaffolding">Project Scaffolding</h2>
@@ -211,112 +165,100 @@
 <li>Set up a new Git remote from local repository to online repository on GitHub</li>
 <li>Push local Git history to the online repository</li>
 </ol>
-<h2 id="implement-landing-page">Implement Landing Page</h2>
-<!-- Implement stateless feature: landing page -->
-
+<h2 id="implement-landing-page-hello-world">Implement Landing Page (Hello, World)</h2>
 <ol>
-<li>Introduction to test-driven development</li>
-<li>Outside-in TDD part 1: functional test (Selenium)</li>
+<li>Introduction to test-driven development (TDD)</li>
+<li>Inside-out TDD part 1: pure unit test</li>
 <li>Create an HTML page for the landing page with custom greeting from GET request</li>
-<li>Make Selenium/Selenide test pass (HTML, controller)</li>
-<li>Outside-in TDD part 2: unit test in mocked environment (@MockMvc + @SpringBootTest)</li>
-<li>Make unit tests implemented with Spring Boot test client pass (@MockMvc)</li>
-<li>Outside-in TDD part 3: purely isolated unit test (@Test)</li>
-<li>Make simple JUnit 5 unit tests pass</li>
-<li>Recap</li>
+<li>Create a unit test for the controller class</li>
+<li>Inside-out TDD part 2: unit test in mocked environment using <code>@MockMvc</code>
+   and <code>@SpringBootTest</code></li>
+<li>Create a unit test with mock for the controller class</li>
+<li>Inside-out TDD part 3: functional test with Selenium (Optional)</li>
+</ol>
+<h2 id="quality-assurance-test-automation">Quality Assurance &amp; Test Automation</h2>
+<ol>
+<li>Deploy the app manually using Heroku or Fly.io CLI tool</li>
+<li>Automate test suite execution using GitHub Actions on GitHub</li>
+<li>Automate deployment using GitHub Actions on GitHub</li>
+<li>Code quality analysis using GitHub Actions on GitHub (Optional)</li>
 </ol>
 <h2 id="implement-todo-list">Implement Todo List</h2>
-<!-- Implement stateful feature: public todo list -->
-
 <ol>
-<li>Create data persistence model using JPA</li>
-<li>Create data migration using Liquibase</li>
+<li>Implement data persistence layer</li>
+<li>Create model class using JPA</li>
+<li>Create migration script using Liquibase</li>
+<li>Implement business logic layer</li>
+<li>Create a service class</li>
+<li>Write a unit test for service class</li>
+<li>Implement presentation layer</li>
+<li>Create a controller class</li>
+<li>Write a unit test for controller class</li>
+<li>Create a Web page using HTML and Thymeleaf template syntax</li>
 </ol>
-<h2 id="implement-personalised-todo-list">Implement Personalised Todo List</h2>
-<!-- User authentication -->
+<h2 id="extra-challenge-personalised-todo-list-with-authentication">Extra Challenge: Personalised Todo List with Authentication</h2>
+<!-- 
+    -- Notes --
+    Security in Spring: 
+    https://stackoverflow.com/questions/42148257/unit-testing-methods-using-principal-from-spring-secucrity?noredirect=1&lq=1
+-->
 
 <ol>
-<li>Security in Spring</li>
-<li>https://stackoverflow.com/questions/42148257/unit-testing-methods-using-principal-from-spring-secucrity?noredirect=1&amp;lq=1</li>
 <li>Define user authentication model</li>
 <li>Update database schema via database migration</li>
 <li>Secure the existing todo list behind authentication</li>
-<li>Implement basic user view, login, logout to pass the tests</li>
-</ol></div>
+</ol>
+<h2 id="extra-challenge-postgresql-database">Extra Challenge: PostgreSQL Database</h2>
+<ol>
+<li>Install PostgreSQL on development and deployment environments</li>
+<li>Local installation options: system-wide (using installer) or container
+      (Docker)</li>
+<li>Installation options on PaaS: Heroku Addon (Heroku) or <code>flyctl</code> (Fly.io)</li>
+</ol>
+              
             </div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Course Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../setup/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
         </div>
-    </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
-    </body>
+</body>
 </html>
