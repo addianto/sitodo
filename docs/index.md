@@ -15,8 +15,7 @@ By the end of this course, students should be able to:
 
 -  Apply a workflow when using a version control system such as [Git][]
 -  Develop a simple Web application using Java programming language and Spring
-   Boot framework backed by a relational database (e.g. PostgreSQL) for data
-   persistence
+   Boot framework backed by a relational database.
 -  Create tests for verifying the Web application in different levels, such as
    unit test, integration test, and functional test
 -  Set up a Continuous Integration/Continuous Deployment (CI/CD) pipeline using
