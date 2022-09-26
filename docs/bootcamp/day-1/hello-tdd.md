@@ -122,3 +122,5 @@ We have not covered refactoring in a TDD cycle since the production code is stil
 In the next section, you will deploy the app to a Platform-as-a-Service provider and learn how to automate the deployment process.
 You will also see how to ensure that the test suite is always executed whenever you pushed commits to GitHub.
 Make sure you have created an account on [Heroku](https://www.heroku.com) before continuing to the next section.
+
+# TODO: Add reflection questions to make them introspect their progress

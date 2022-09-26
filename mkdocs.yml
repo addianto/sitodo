@@ -7,28 +7,18 @@ nav:
   - Home:
       - Course Overview: index.md
       - Table of Contents: toc.md
-  - Course Setup:
-      - Overview: setup/index.md
-      - Local Development Environment: setup/environment.md
-      - Project Scaffolding: setup/scaffolding.md
-      - GitHub: setup/github.md
-      - Deploy to PaaS: setup/deploy.md
-  - TDD-style Hello, World:
-      - Overview: feature-1/index.md
-      - Test-Driven Development: feature-1/tdd.md
-      - Unit Test: feature-1/unit-test.md
-      - Unit Test in Mocked Environment: feature-1/unit-test-mock.md
-  - Quality Assurance & Automation:
-      - Overview: qa/index.md
-      - Automate Test Execution using GitHub Actions: qa/test.md
-      - Automate Deployment using GitHub Actions: qa/deploy.md
-  - Implement Basic Feature:
-      - Overview: feature-2/index.md
-      - Data Persistence Layer: feature-2/data.md
-      - Business Logic Layer: feature-2/business.md
-      - Presentation Layer: feature-2/presentation.md
+  - Day One:
+      - Overview: day-1/README.md
+      - Hello, TDD: day-1/hello-tdd.md
+      - Automation: day-1/qa-automation.md
+      - Create a Todo List (Part 1): day-1/todo-list.md
+      # 1 jam course, 1 jam mengarahkan
+      # 4 jam mengerjakan sesuai instruksi + 2 jam additional
+      #   (bagi peserta yang butuh tantangan/butuh bantuan tambahan)
+  - Day Two:
+      - Overview: day-2/README.md
+      - Refactor Model to Use PostgreSQL Database: day-2/postgres.md
   - Extra Challenges:
       - Functional Test: extra/functional-test.md
       - Analyse Code Quality: extra/codeql.md
       - User Authentication: extra/auth.md
-      - PostgreSQL Database: extra/postgres.md
