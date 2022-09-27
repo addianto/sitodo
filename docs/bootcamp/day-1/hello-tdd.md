@@ -50,7 +50,7 @@ This is where we are going to test the implementation in a mock/simulated enviro
 
 ## Test in a Mock Environment
 
-We do know that `showHello` is an HTTP request handler implemented in a controller.
+We know that `showHello` is an HTTP request handler implemented in a controller.
 If we want to actually verify if the implementation is correct,
 we can test the implementation in a simulated Web server.
 
@@ -101,7 +101,7 @@ which automatically injected by the Spring framework during runtime,
 to send an HTTP GET request to `/hello` path in the application.
 Then, we try to verify the HTTP response given by the application.
 
-Try to run the test suite again, either via the shortcuts in the IDE or `mvnw test` command in the shell.
+Try to run the test suite again, either via the shortcut in the IDE or `mvnw test` command in the shell.
 You will see that the test suite does not run instantly as they previously did.
 The test runner now runs the production code on a simulated server before executing the test cases.
 Once you have verified all test cases pass, save your work as a new Git commit and push it to GitHub:
