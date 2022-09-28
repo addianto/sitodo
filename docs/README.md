@@ -40,21 +40,37 @@ minimum, you need to:
 To complete this course, you need a computing device that can run the following
 development tools:
 
--  A shell, such as `bash` on Linux or macOS, or `cmd`/`pwsh` on Windows
--  Latest long-term support (LTS) version of Java Development Kit (JDK)
-   -  Download JDK from [Adoptium][]
-   -  At the time of writing, the latest LTS version is **17**
+-  A shell, such as `bash` on Linux or Mac OS, or `cmd`/`pwsh` on Windows
+-  Latest long-term support (LTS) version (i.e. Java 17 at the time of writing) of Java Development Kit (JDK),
+   preferably from [Adoptium][].
 -  [IntelliJ IDEA Community Edition by JetBrains][]
-   -  While you can use other text editors (e.g. Visual Studio Code) or IDE such
-      as Eclipse or NetBeans, we might not be able to troubleshoot any problems
-      that come up during the course
 -  [PostgreSQL][] database system version 14
+
+> Note: While you can use other text editors (e.g. Visual Studio Code) or IDE such
+> as Eclipse or NetBeans, we might not be able to troubleshoot any problems
+> that come up during the course
 
 In addition, you also need to have an account on the following online services:
 
 -  [GitHub][] an online source code repository and project management system
 -  [Heroku][] a Platform-as-a-Service (PaaS) for deploying the Web application
-   - Install the CLI tool as well into your local development environment
+
+## Course Outlines
+
+The course will include:
+
+1. Set up local development environment
+2. Initialise up a Spring Boot project
+3. Introduction to test-driven development (TDD)
+4. Create a continuous integration and deployment pipeline (CI/CD)
+
+There will be some additional challenges for participants, such as:
+
+1. Develop functional test using Selenium
+2. Implement basic user authentication using Spring Security
+3. Migrate deployment to a different PaaS provider such as [Fly.io][]
+
+You can proceed to the contents for [Day 1](./bootcamp/day-1/hello-tdd.md).
      
 ## License
 

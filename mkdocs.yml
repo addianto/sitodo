@@ -5,25 +5,23 @@ theme:
   name: readthedocs
 nav:
   - Home:
-      - Course Overview: index.md
-      - Table of Contents: toc.md
+      - Course Overview: README.md
   - Day One:
-      - Overview: day-1/README.md
-      - Hello, TDD: day-1/hello-tdd.md
-      - Automation: day-1/qa-automation.md
-      - Create a Todo List (Part 1): day-1/todo-list.md
+      - Initialise Project: bootcamp/day-1/init-spring.md
+      - Hello, TDD: bootcamp/day-1/hello-tdd.md
+      - Automation: bootcamp/day-1/qa-automation.md
+      - Create a Basic Todo List: bootcamp/day-1/basic-list.md
+      - Recap: bootcamp/day-1/end-day-1.md
       # 1 jam course, 1 jam mengarahkan
       # 4 jam mengerjakan sesuai instruksi + 2 jam additional
       #   (bagi peserta yang butuh tantangan/butuh bantuan tambahan)
   - Day Two:
-      - Overview: day-2/README.md
-      - Create a Todo List (Part 2): day-2/todo-list-continued.md
-      - Refactor Model to Use PostgreSQL Database: day-2/postgres.md
+      - TBD: bootcamp/day-2/README.md
       # 1 jam course, 1 jam mengarahkan
       # 4 jam mengerjakan sesuai instruksi + 2 jam additional
       #   (bagi peserta yang butuh tantangan/butuh bantuan tambahan)
       # Ide untuk hari kedua: badges, README, GitHub Actions
-  - Extra Challenges:
-      - Functional Test: extra/functional-test.md
-      - Analyse Code Quality: extra/codeql.md
-      - User Authentication: extra/auth.md
+  #- Extra Challenges:
+  #    - Functional Test: extra/functional-test.md
+  #    - Analyse Code Quality: extra/codeql.md
+  #    - User Authentication: extra/auth.md

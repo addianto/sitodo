@@ -1,3 +1,0 @@
-# Course Setup
-
-TBD.

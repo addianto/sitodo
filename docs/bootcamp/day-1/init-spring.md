@@ -1,4 +1,4 @@
-# Project Scaffolding
+# Project Initialisation
 
 Go to [Spring Initializr](https://start.spring.io/).
 
@@ -65,14 +65,20 @@ clean up the build artifacts using `mvnw clean` command:
 
 ## Initialise a Local Git Repository
 
+Initialise the current working directory where the project was extracted as a new Git repository:
+
 ```shell
 git init -b main .
 ```
+
+Configure the local repository to use your credentials on GitHub:
 
 ```shell
 git config user.name "<Full Name>"
 git config user.email "<Email Address>"
 ```
+
+Add all files into Git and save it as a new commit:
 
 ```shell
 git add .
@@ -81,12 +87,23 @@ git commit
 
 ## Create an Online Git Repository on GitHub
 
+Go to GitHub and create a new repository.
+You can name it anything, but try to make it descriptive.
+For the purpose of the bootcamp, you can name your new repository as "Sitodo".
+
+Once you created the new repository, take note of its clone URL on GitHub.
+Pick the HTTPS clone URL if you are new to Git and GitHub.
+Then, go back to your shell and add a new _remote_ called `origin` using `git` command:
+
 ```shell
 git remote add origin <URL to the remote repository>
 ```
+
+Then push the commit from the `main` branch (i.e. the default branch in your local Git repository) to GitHub:
 
 ```shell
 git push origin main
 ```
 
-Open GitHub page of your repository.
+Open GitHub page of your repository and see if the source code has been pushed successfully.
+Now let us move on to the next part of the course, which is to get introduced with test-driven development.

@@ -28,3 +28,6 @@ git commit
 git push origin main
 ```
 
+## Setting Up GitHub Actions
+
+At this point, the app will not deploy because we have not configured the CI/CD tools provided by GitHub.

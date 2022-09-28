@@ -1,5 +1,8 @@
 # Hello, Test-Driven Development
 
+Let us start by creating a controller class named `HelloController` in `src/main/java` directory,
+specifically under the package that was initialised by Spring Initialzr:
+
 ```java
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,8 +16,8 @@ public class HelloController {
 }
 ```
 
-We call this stubbing or creating an empty implementation.
-
+We left the implementation empty for now.
+This is called as stubbing or creating an empty implementation. 
 If the return value of a method in a controller class is a string,
 then the framework expects the return value contains the name of a Web page template.
 
@@ -65,8 +68,11 @@ We always (or, strive to) start with writing a test case that initially fails.
 
 ## Pass the First Test
 
-According to the first test case, it expects the controller to use a Web page template named `hello` to generate the HTML response.
-// TODO Merge content from laptop
+According to the first test case, it expects the controller to use a Web page template (or often called as "view") named `hello` to generate the HTML response.
+Therefore, if you want to make the test pass, you need to make an HTML view with the same name.
+Now, create a new HTML view in `templates` directory.
+The content can be empty, since we only want to make the test pass.
+But at least, write something in the HTML such as a "Hello, World" message.
 
 At this point, we can verify that the controller works fine as an independent unit.
 The implementation of `showHello` returns the correct string value as we expected.
@@ -147,5 +153,3 @@ We have not covered refactoring in a TDD cycle since the production code is stil
 In the next section, you will deploy the app to a Platform-as-a-Service provider and learn how to automate the deployment process.
 You will also see how to ensure that the test suite is always executed whenever you pushed commits to GitHub.
 Make sure you have created an account on [Heroku](https://www.heroku.com) before continuing to the next section.
-
-# TODO: Add reflection questions to make them introspect their progress
