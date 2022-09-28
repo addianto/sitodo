@@ -60,6 +60,10 @@ public class HelloControllerTest {
 
 The method that implements a test case can be structured into four sections:
 **Setup**, **Exercise**, **Verify**, and **Teardown** sections.
+**Setup** is used to initialise the test environment (e.g. the object to be tested, sample data, load test case input).
+**Exercise**, as its name implies, executes the procedures that invoke the production code that are being tested.
+**Verify** contains procedures that verify the result from the **Exercise**.
+**Teardown** usually contains procedures to clean up the test environment.
 
 Run the test suite via the shortcut in the editor or use Maven command `mvnw test`.
 If you implement the method exactly as written in this document, the test case execution will fail.

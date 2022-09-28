@@ -70,7 +70,7 @@ There will be some additional challenges for participants, such as:
 2. Implement basic user authentication using Spring Security
 3. Migrate deployment to a different PaaS provider such as [Fly.io][]
 
-You can proceed to the contents for [Day 1](./bootcamp/day-1/hello-tdd.md).
+You can proceed to the contents for [Day 1](./bootcamp/day-1/init-spring.md).
      
 ## License
 

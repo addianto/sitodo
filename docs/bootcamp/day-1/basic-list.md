@@ -49,7 +49,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TodoListRepository extends CrudRepository<TodoList, Long> {
+public interface TodoListRepository extends CrudRepository<TodoItem, Long> {
 }
 ```
 
@@ -226,11 +226,8 @@ class TodoListControllerTest {
     @Test
     @DisplayName("HTTP GET '/list' returns an HTML page with non-empty list")
     void showList_withSampleData_ok() throws Exception {
-        TodoItem mockTodoItem = createMockTodoItem(1L, "Buy milk");
-        TodoList mockList = mock(TodoList.class);
-        when(mockList.getId()).thenReturn(1L);
-        when(mockList.getItems()).thenReturn(List.of(mockTodoItem));
-        when(todoListService.getTodoListById(anyLong())).thenReturn(mockList);
+        TodoItem mockTodoItem = new TodoItem("Buy milk");
+        when(todoListService.getTodoItems()).thenReturn(List.of(mockTodoItem));
 
         mockMvc.perform(get("/list")).andExpectAll(
             status().isOk(),
