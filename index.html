@@ -13,7 +13,7 @@
       <script>
         // Current page data
         var mkdocs_page_name = "Course Overview";
-        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_input_path = "README.md";
         var mkdocs_page_url = "/";
       </script>
     
@@ -52,66 +52,29 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#course-outlines">Course Outlines</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#license">License</a>
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="toc/">Table of Contents</a>
+              </ul>
+              <p class="caption"><span class="caption-text">Day One</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-1/init-spring/">Initialise Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-1/hello-tdd/">Hello, TDD</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-1/qa-automation/">Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-1/basic-list/">Create a Basic Todo List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-1/end-day-1/">Recap</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Course Setup</span></p>
+              <p class="caption"><span class="caption-text">Day Two</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="setup/">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="setup/environment.md">Local Development Environment</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="setup/scaffolding.md">Project Scaffolding</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="setup/github.md">GitHub</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="setup/deploy.md">Deploy to PaaS</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">TDD-style Hello, World</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="feature-1/index.md">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-1/tdd.md">Test-Driven Development</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-1/unit-test.md">Unit Test</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-1/unit-test-mock.md">Unit Test in Mocked Environment</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Quality Assurance & Automation</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="qa/index.md">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="qa/test.md">Automate Test Execution using GitHub Actions</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="qa/deploy.md">Automate Deployment using GitHub Actions</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Implement Basic Feature</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="feature-2/index.md">Overview</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-2/data.md">Data Persistence Layer</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-2/business.md">Business Logic Layer</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="feature-2/presentation.md">Presentation Layer</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Extra Challenges</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="extra/functional-test.md">Functional Test</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="extra/codeql.md">Analyse Code Quality</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="extra/auth.md">User Authentication</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="extra/postgres.md">PostgreSQL Database</a>
+                  <li class="toctree-l1"><a class="reference internal" href="bootcamp/day-2/">TBD</a>
                   </li>
               </ul>
       </div>
@@ -152,8 +115,7 @@ test-first approach and continuous integration/continuous deployment (CI/CD).</p
 <ul>
 <li>Apply a workflow when using a version control system such as <a href="https://git-scm.com/">Git</a></li>
 <li>Develop a simple Web application using Java programming language and Spring
-   Boot framework backed by a relational database (e.g. PostgreSQL) for data
-   persistence</li>
+   Boot framework backed by a relational database.</li>
 <li>Create tests for verifying the Web application in different levels, such as
    unit test, integration test, and functional test</li>
 <li>Set up a Continuous Integration/Continuous Deployment (CI/CD) pipeline using
@@ -176,22 +138,37 @@ minimum, you need to:</p>
 <p>To complete this course, you need a computing device that can run the following
 development tools:</p>
 <ul>
-<li>A shell, such as <code>bash</code> on Linux or macOS, or <code>cmd</code>/<code>pwsh</code> on Windows</li>
-<li>Latest long-term support (LTS) version of Java Development Kit (JDK)</li>
-<li>Download JDK from <a href="https://adoptium.net/">Adoptium</a></li>
-<li>At the time of writing, the latest LTS version is <strong>17</strong></li>
+<li>A shell, such as <code>bash</code> on Linux or Mac OS, or <code>cmd</code>/<code>pwsh</code> on Windows</li>
+<li>Latest long-term support (LTS) version (i.e. Java 17 at the time of writing) of Java Development Kit (JDK),
+   preferably from <a href="https://adoptium.net/">Adoptium</a>.</li>
 <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA Community Edition by JetBrains</a></li>
-<li>While you can use other text editors (e.g. Visual Studio Code) or IDE such
-      as Eclipse or NetBeans, we might not be able to troubleshoot any problems
-      that come up during the course</li>
 <li><a href="https://www.postgresql.org/">PostgreSQL</a> database system version 14</li>
 </ul>
+<blockquote>
+<p>Note: While you can use other text editors (e.g. Visual Studio Code) or IDE such
+as Eclipse or NetBeans, we might not be able to troubleshoot any problems
+that come up during the course</p>
+</blockquote>
 <p>In addition, you also need to have an account on the following online services:</p>
 <ul>
 <li><a href="https://github.com">GitHub</a> an online source code repository and project management system</li>
 <li><a href="https://www.heroku.com">Heroku</a> a Platform-as-a-Service (PaaS) for deploying the Web application</li>
-<li>Install the CLI tool as well into your local development environment</li>
 </ul>
+<h2 id="course-outlines">Course Outlines</h2>
+<p>The course will include:</p>
+<ol>
+<li>Set up local development environment</li>
+<li>Initialise up a Spring Boot project</li>
+<li>Introduction to test-driven development (TDD)</li>
+<li>Create a continuous integration and deployment pipeline (CI/CD)</li>
+</ol>
+<p>There will be some additional challenges for participants, such as:</p>
+<ol>
+<li>Develop functional test using Selenium</li>
+<li>Implement basic user authentication using Spring Security</li>
+<li>Migrate deployment to a different PaaS provider such as <a href="https://fly.io">Fly.io</a></li>
+</ol>
+<p>You can proceed to the contents for <a href="bootcamp/day-1/hello-tdd/">Day 1</a>.</p>
 <h2 id="license">License</h2>
 <p>The learning materials in this course are licensed under Creative Commons
 Attribution-ShareAlike 4.0 (<a href="./LICENSE">CC BY-SA 4.0</a>).
@@ -201,7 +178,7 @@ materials as long as it is permitted under the terms of the license.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="toc/" class="btn btn-neutral float-right" title="Table of Contents">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="bootcamp/day-1/init-spring/" class="btn btn-neutral float-right" title="Initialise Project">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -225,7 +202,7 @@ materials as long as it is permitted under the terms of the license.</p>
     
     
     
-      <span><a href="toc/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="bootcamp/day-1/init-spring/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

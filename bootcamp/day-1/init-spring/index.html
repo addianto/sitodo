@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitodo-example.herokuapp.com/bootcamp/day-1/init-spring/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Initialise Project - Sitodo</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Initialise Project";
+        var mkdocs_page_input_path = "bootcamp\\day-1\\init-spring.md";
+        var mkdocs_page_url = "/bootcamp/day-1/init-spring/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Sitodo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Home</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../..">Course Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day One</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Initialise Project</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#initialise-a-spring-boot-project">Initialise a Spring Boot Project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initialise-a-local-git-repository">Initialise a Local Git Repository</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-an-online-git-repository-on-github">Create an Online Git Repository on GitHub</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../hello-tdd/">Hello, TDD</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qa-automation/">Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-list/">Create a Basic Todo List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../end-day-1/">Recap</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day Two</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2/">TBD</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Sitodo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Day One &raquo;</li>
+      <li>Initialise Project</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="project-initialisation">Project Initialisation</h1>
+<p>Go to <a href="https://start.spring.io/">Spring Initializr</a>.</p>
+<h2 id="initialise-a-spring-boot-project">Initialise a Spring Boot Project</h2>
+<p>Choose the following options:</p>
+<ul>
+<li>Maven project</li>
+<li>Java language</li>
+<li>
+<p>Spring Boot version 2.7.4 (the latest stable version at the time of writing)</p>
+</li>
+<li>
+<p>Write the name of the base Java package in the <strong>group</strong> field.
+   The name should follow the reverse-order domain naming scheme.
+   Usually, the name is based on the actual domain name of a company.
+   For example, if you work on a company called Example and the domain name is <a href="#"><code>example.com</code></a>,
+   then the <em>reverse-order</em> name is <code>com.example</code>.</p>
+</li>
+<li>Write the name of the application in the <strong>artifact</strong> and <strong>name</strong> fields.
+   Make sure the name starts with an alphabet symbol and does not contain a hyphen (e.g. <code>-</code>).</li>
+<li>Provide a short description of the project in the <strong>description</strong> field.</li>
+<li><strong>Package name</strong> field should not be modified since it is generated from the values set in <em>group</em> and <em>artifact</em> fields.
+   For example, if the <em>group</em> is set to <code>com.example</code> and <em>artifact</em> is set to <code>sitodo</code>,
+   then the generated name will be <code>com.example.sitodo</code>.</li>
+<li>Choose Java version <strong>17</strong> because it is the LTS (long-term support) version at the time of writing.</li>
+</ul>
+<p>Include the following dependencies as well:</p>
+<ul>
+<li>Lombok</li>
+<li>Spring Web</li>
+<li>Thymeleaf</li>
+<li>Spring Data JPA</li>
+<li>H2 Database</li>
+</ul>
+<p>The final options should be similar to the following screenshot:</p>
+<p><img alt="An example of Spring Boot project configuration" src="../images/spring_init.png" /></p>
+<p>Generate and download the base code as a ZIP file by clicking the Generate button.
+Extract the downloaded ZIP file into a directory of your choice.
+For example, if you extract the ZIP file into the <strong>home directory</strong> of your operating system (OS),
+there would be a new directory containing the source code at the following path:</p>
+<ul>
+<li>GNU/Linux-based OS (e.g. Debian, Ubuntu): <code>/home/MyAccount/sitodo</code></li>
+<li>Windows: <code>C:\Users\MyAccount\sitodo</code></li>
+</ul>
+<p>Open a (terminal) shell in your OS and go to the project directory:</p>
+<pre><code class="language-shell">cd &lt;path to the project directory&gt;
+</code></pre>
+<p>Use provided Maven wrapper (<code>mvnw</code>) in the project directory to build the project using <code>package</code> command:</p>
+<pre><code class="language-shell">./mvnw package
+</code></pre>
+<p>If everything goes well, you will see a new directory named <code>output</code> that contains a JAR file.
+Since we have verified that the project can be built successfully,
+clean up the build artifacts using <code>mvnw clean</code> command:</p>
+<pre><code class="language-shell">./mvnw clean
+</code></pre>
+<h2 id="initialise-a-local-git-repository">Initialise a Local Git Repository</h2>
+<p>Initialise the current working directory where the project was extracted as a new Git repository:</p>
+<pre><code class="language-shell">git init -b main .
+</code></pre>
+<p>Configure the local repository to use your credentials on GitHub:</p>
+<pre><code class="language-shell">git config user.name &quot;&lt;Full Name&gt;&quot;
+git config user.email &quot;&lt;Email Address&gt;&quot;
+</code></pre>
+<p>Add all files into Git and save it as a new commit:</p>
+<pre><code class="language-shell">git add .
+git commit
+</code></pre>
+<h2 id="create-an-online-git-repository-on-github">Create an Online Git Repository on GitHub</h2>
+<p>Go to GitHub and create a new repository.
+You can name it anything, but try to make it descriptive.
+For the purpose of the bootcamp, you can name your new repository as "Sitodo".</p>
+<p>Once you created the new repository, take note of its clone URL on GitHub.
+Pick the HTTPS clone URL if you are new to Git and GitHub.
+Then, go back to your shell and add a new <em>remote</em> called <code>origin</code> using <code>git</code> command:</p>
+<pre><code class="language-shell">git remote add origin &lt;URL to the remote repository&gt;
+</code></pre>
+<p>Then push the commit from the <code>main</code> branch (i.e. the default branch in your local Git repository) to GitHub:</p>
+<pre><code class="language-shell">git push origin main
+</code></pre>
+<p>Open GitHub page of your repository and see if the source code has been pushed successfully.
+Now let us move on to the next part of the course, which is to get introduced with test-driven development.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../.." class="btn btn-neutral float-left" title="Course Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../hello-tdd/" class="btn btn-neutral float-right" title="Hello, TDD">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../hello-tdd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

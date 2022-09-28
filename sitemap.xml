@@ -2,17 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sitodo-example.herokuapp.com/</loc>
-         <lastmod>2022-09-21</lastmod>
+         <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitodo-example.herokuapp.com/toc/</loc>
-         <lastmod>2022-09-21</lastmod>
+         <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://sitodo-example.herokuapp.com/setup/</loc>
-         <lastmod>2022-09-21</lastmod>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/basic-list/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/end-day-1/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/hello-tdd/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/init-spring/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-1/qa-automation/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-2/</loc>
+         <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
