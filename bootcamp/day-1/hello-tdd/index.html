@@ -146,7 +146,10 @@ public class HelloControllerTest {
 }
 </code></pre>
 <p>The method that implements a test case can be structured into four sections:
-<strong>Setup</strong>, <strong>Exercise</strong>, <strong>Verify</strong>, and <strong>Teardown</strong> sections.</p>
+<strong>Setup</strong>, <strong>Exercise</strong>, <strong>Verify</strong>, and <strong>Teardown</strong> sections.
+<strong>Setup</strong> is used to initialise the test environment (e.g. the object to be tested, sample data, load test case input).
+<strong>Exercise</strong>, as its name implies, executes the procedures that invoke the production code that are being tested.
+<strong>Verify</strong> will verify</p>
 <p>Run the test suite via the shortcut in the editor or use Maven command <code>mvnw test</code>.
 If you implement the method exactly as written in this document, the test case execution will fail.
 That is the way how test-driven development is conducted.
