@@ -112,7 +112,7 @@ git push origin main
 </code></pre>
 <h2 id="setting-up-github-actions">Setting Up GitHub Actions</h2>
 <p>Create a new file with name <code>dpl.yml</code> in <em>.github/workflows</em> folder from your current repository.
-This file is used to execute  <em>deployment</em> by <em>runner</em> from GitHub Actions.
+This file is used to execute <em>deployment</em> by <em>runner</em> from GitHub Actions.
 The content of the <code>dpl.yml</code> is as follows:</p>
 <pre><code class="language-yml">name: Deploy
 
@@ -153,8 +153,8 @@ This thing happened because you have not configured the parameters needed by the
 Now, you will configure those parameters:</p>
 <ol>
 <li>Create a Heroku account if you have not done so.
-   You can create a Heroku account on its login page at <a href="https://id.heroku.com/login">this link</a>.
-   Once you've logged in to the dashboard page, create a Heroku app.</li>
+   You can create a Heroku account on its login page on <a href="https://id.heroku.com/login">this link</a>.
+   Once you have logged in to the dashboard page, create a Heroku app and take note of the name.</li>
 <li>Copy API Key from your account. API Key can be found in <code>Account Settings -&gt; API Key</code>. Keep your API Key and the information about your Heroku application in a text file with given format:
    <code>HEROKU_API_KEY: &lt;YOUR_API_KEY_VALUE&gt;
    HEROKU_APP_NAME: &lt;YOUR_HEROKU_APPLICATION_NAME&gt;</code></li>
