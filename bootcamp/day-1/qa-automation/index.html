@@ -148,16 +148,20 @@ jobs:
         environment: production
 </code></pre>
 <p>After you perform all the procedures above, your new Spring Boot application is ready to deploy in Heroku.
-If you open the GitHub Actions tab in your repository, it seems that a <em>workflow</em> is already running but the status is failed because there's an error that says there are some parameters in <em>deployment</em> process that were not found. This thing happened because you’re not yet configure the parameters needed by the <em>workflow</em>.
-Now, you’ll configure those parameters.</p>
+If you open the GitHub Actions tab in your repository, it seems that a <em>workflow</em> is already running but the status is failed because there is an error that says there are some parameters in <em>deployment</em> process that were not found.
+This thing happened because you have not configured the parameters needed by the <em>workflow</em>.
+Now, you will configure those parameters:</p>
 <ol>
+<li>Create a Heroku account if you have not done so.
+   You can create a Heroku account on its login page at <a href="https://id.heroku.com/login">this link</a>.
+   Once you've logged in to the dashboard page, create a Heroku app.</li>
 <li>Copy API Key from your account. API Key can be found in <code>Account Settings -&gt; API Key</code>. Keep your API Key and the information about your Heroku application in a text file with given format:
-    <code>HEROKU_API_KEY: &lt;YOUR_API_KEY_VALUE&gt;
-    HEROKU_APP_NAME: &lt;YOUR_HEROKU_APPLICATION_NAME&gt;</code></li>
+   <code>HEROKU_API_KEY: &lt;YOUR_API_KEY_VALUE&gt;
+   HEROKU_APP_NAME: &lt;YOUR_HEROKU_APPLICATION_NAME&gt;</code></li>
 <li>Open your GitHub repository configuration and open the Secrets section for GitHub Actions (<code>Settings -&gt; Secrets -&gt; Actions</code>).</li>
 <li>Add a new <code>repository secret</code> variable to do the <em>deployment</em>. Key-Value pair from the variable that you’ll make can be obtained from the information that you noted in the previous text file. Example can be seen below:
-    <code>(NAME)HEROKU_APP_NAME
-    (VALUE)MY-APPLICATION</code></li>
+   <code>(NAME)HEROKU_APP_NAME
+   (VALUE)MY-APPLICATION</code></li>
 <li>Keep those variables.</li>
 <li>Open GitHub Actions and re-run the failed <em>workflow</em>.</li>
 </ol>
