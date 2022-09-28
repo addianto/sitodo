@@ -304,11 +304,8 @@ class TodoListControllerTest {
     @Test
     @DisplayName(&quot;HTTP GET '/list' returns an HTML page with non-empty list&quot;)
     void showList_withSampleData_ok() throws Exception {
-        TodoItem mockTodoItem = createMockTodoItem(1L, &quot;Buy milk&quot;);
-        TodoList mockList = mock(TodoList.class);
-        when(mockList.getId()).thenReturn(1L);
-        when(mockList.getItems()).thenReturn(List.of(mockTodoItem));
-        when(todoListService.getTodoListById(anyLong())).thenReturn(mockList);
+        TodoItem mockTodoItem = new TodoItem(&quot;Buy milk&quot;);
+        when(todoListService.getTodoItems()).thenReturn(List.of(mockTodoItem));
 
         mockMvc.perform(get(&quot;/list&quot;)).andExpectAll(
             status().isOk(),
