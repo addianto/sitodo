@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitodo-example.herokuapp.com/bootcamp/day-2/test-automation/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Test Automation - Sitodo</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Test Automation";
+        var mkdocs_page_input_path = "bootcamp\\day-2\\test-automation.md";
+        var mkdocs_page_url = "/bootcamp/day-2/test-automation/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Sitodo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Home</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../..">Course Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day One</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/init-spring/">Initialise Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/hello-tdd/">Hello, TDD</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/qa-automation/">Deployment Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/basic-list/">Create a Basic Todo List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/end-day-1/">Recap</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day Two</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Test Automation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#measure-codeline-coverage">Measure Code/Line Coverage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#status-badges">Status Badges</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#coverage-badge">Coverage Badge</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../update-data-model/">One of Many Lists</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Sitodo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Day Two &raquo;</li>
+      <li>Test Automation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="test-automation-using-github-actions">Test Automation using GitHub Actions</h1>
+<p>Create a new YML file called <code>ci.yml</code> in <code>.github/workflows</code> directory of your project.
+The file contains a new workflow that shall be executed on every commit that pushed to the repository
+and on every pull request (PR) created on GitHub.</p>
+<p>The content of <code>ci.yml</code> is as follows:</p>
+<pre><code class="language-yml">---
+name: Continuous Integration (CI)
+
+on: [ push, pull_request ]
+
+jobs:
+    test:
+        name: Run all tests
+
+        runs-on: ubuntu-22.04
+
+        env:
+            # Based on the Maven CI/CD template from GitLab:
+            # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Maven.gitlab-ci.yml
+            # It is recommended to use these variables to reduce noise in the logs
+            MAVEN_OPTS: &gt;
+                -Dhttps.protocols=TLSv1.2
+                -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
+                -Dorg.slf4j.simpleLogger.showDateTime=true
+                -Djava.awt.headless=true
+            MAVEN_CLI_OPTS: &gt;
+                --batch-mode
+                --errors
+                --fail-at-end
+                --show-version
+                -DinstallAtEnd=true
+                -DdeployAtEnd=true
+
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v3
+            -   name: Set up Java
+                uses: actions/setup-java@v3
+                with:
+                    distribution: &quot;temurin&quot;
+                    java-version: &quot;17&quot;
+                    cache: &quot;maven&quot;
+            -   name: Run unit tests
+                run: mvn $MAVEN_CLI_OPTS test
+</code></pre>
+<p>Save the file as a new Git commit and push it to GitHub:</p>
+<pre><code class="language-shell">git add .github/workflows/ci.yml
+git commit
+git push origin main
+</code></pre>
+<p>Open the Actions tab on your GitHub repository page.
+You will see two workflows running in parallel: <code>deploy</code> and <code>ci</code>.
+Wait for a moment until both workflows finishes.
+Ensure that both workflows end successfully.</p>
+<p>It is possible for <code>ci</code> workflow to fail.
+If the test cases execution contains a failing test result,
+then <code>ci</code> workflow will report that as a failure in workflow execution.
+If that is the case with your current code, try to fix your code to make the <code>ci</code> pass.
+But do not spuriously fix it by rapidly pushing new commit only to see if the <code>ci</code> works.
+Run the test cases locally using IDE or Maven <code>mvnw test</code> before pushing the latest changes to GitHub.</p>
+<h2 id="measure-codeline-coverage">Measure Code/Line Coverage</h2>
+<p>We can measure how extensive a production code is tested by measuring the line coverage.
+It is a metric that expresses the ratio of tested code compared to all lines on code (LOC).</p>
+<p>Suppose you have a source code of an application that contains 1000 LOC.
+If the line coverage reported 75% coverage, it means only 750 out of 1000 LOC that have been executed during testing.
+The remaining 250 LOC are not yet executed.
+Based on that fact, you can estimate that 250 LOC are not yet tested (or, "covered") by the test cases.</p>
+<p>If you are using IntelliJ, you can execute tests with coverage via the shortcuts.
+You can selectively run a test case or a test suite by opening it in the editor,
+click the green "Play" button to show the possible shortcuts
+and choose "Run 'Test' with Coverage", as depicted in the following screenshot:</p>
+<p><img alt="Screenshot of code coverage shortcut button" src="../images/coverage_intellij_1.png" /></p>
+<p>After the test finished, you can see the coverage report in IDE:</p>
+<p><img alt="Screenshot of code coverage report in IntelliJ" src="../images/coverage_intellij_2.png" /></p>
+<p>In this exercise, you will configure Maven to use a plugin called JaCoCo to generate the code coverage report.
+First, add a new plugin called <code>jacoco-maven-plugin</code> into <code>pom.xml</code>, specifically in the <code>&lt;build&gt;</code> section:</p>
+<pre><code class="language-xml">
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;excludes&gt;
+                    &lt;exclude&gt;
+                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                    &lt;/exclude&gt;
+                &lt;/excludes&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.jacoco&lt;/groupId&gt;
+            &lt;artifactId&gt;jacoco-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;0.8.8&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<p>Configure the plugin according to an example modified from <a href="https://www.baeldung.com/sonarqube-jacoco-code-coverage#3-dependencies-and-plugins-for-jacoco):">Baeldung</a>:</p>
+<pre><code class="language-xml">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.jacoco&lt;/groupId&gt;
+    &lt;artifactId&gt;jacoco-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;0.8.8&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;jacoco-initialize&lt;/id&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;prepare-agent&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+        &lt;execution&gt;
+            &lt;id&gt;jacoco-site&lt;/id&gt;
+            &lt;phase&gt;test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;report&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p>Run the test cases using <code>mvnw test</code> Maven command.
+The code coverage will be measured during testing.
+At the end of testing, JaCoco will generate a code coverage report.
+You can find the report in <code>build</code> directory.
+The report, by default, is written in HTML, so you can view it in your browser.</p>
+<h2 id="status-badges">Status Badges</h2>
+<p>If you check some open-source projects on GitHub,
+you might have seen some repositories displayed badges in their README.
+By looking at the badges, you can quickly know some status from the project.</p>
+<p>You can also do the same with your projects.
+Some badges are pretty straightforward to set up.
+For example, you can create a badge that displays the status of a workflow in GitHub Actions.</p>
+<p>Suppose you want to show the deployment status of your project.
+Open Actions page on your GitHub repository and click "Deploy" workflow.
+Click "..." button at the end of the filter input field on the page and choose "Create status badge":</p>
+<p><img alt="Screenshot of create status badge" src="../images/github_badges.png" /></p>
+<p>Choose default options for branch and event.
+Then, copy the generated status badge Markdown and put it into your project's <code>README.md</code> file.
+Save your <code>README.md</code> file as a commit and push it to GitHub.
+You will see that if you open your project page on GitHub, the README will display the badge.</p>
+<h2 id="coverage-badge">Coverage Badge</h2>
+<p>There are also some badges that require some configuration, such as badges to display a code coverage report.
+You can use <a href="https://github.com/cicirello/jacoco-badge-generator"><code>jacoco-badge-generator</code></a> as a GitHub action in your <code>ci.yml</code> workflow.
+The project already provided an example in their README file,
+so read the documentation and try to use it in your own project!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../day-1/end-day-1/" class="btn btn-neutral float-left" title="Recap"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../update-data-model/" class="btn btn-neutral float-right" title="One of Many Lists">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../day-1/end-day-1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../update-data-model/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

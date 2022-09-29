@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitodo-example.herokuapp.com/bootcamp/day-1/qa-automation/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Automation - Sitodo</title>
+    <title>Deployment Automation - Sitodo</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Automation";
+        var mkdocs_page_name = "Deployment Automation";
         var mkdocs_page_input_path = "bootcamp\\day-1\\qa-automation.md";
         var mkdocs_page_url = "/bootcamp/day-1/qa-automation/";
       </script>
@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../hello-tdd/">Hello, TDD</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Automation</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deployment Automation</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#setting-up-github-actions">Setting Up GitHub Actions</a>
     </li>
@@ -64,7 +64,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Day Two</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../day-2/">TBD</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2/test-automation/">Test Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2/update-data-model/">One of Many Lists</a>
                   </li>
               </ul>
       </div>
@@ -82,7 +84,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Day One &raquo;</li>
-      <li>Automation</li>
+      <li>Deployment Automation</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -114,7 +116,8 @@ git push origin main
 <p>Create a new file with name <code>dpl.yml</code> in <code>.github/workflows</code> folder in your root project directory.
 This file is used to execute <em>deployment</em> by <em>runner</em> from GitHub Actions.
 The content of the <code>dpl.yml</code> is as follows:</p>
-<pre><code class="language-yml">name: Deploy
+<pre><code class="language-yml">---
+name: Deploy
 
 on:
   push:
@@ -122,30 +125,29 @@ on:
       - main
 
 jobs:
-  Deployment:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-22.04
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.7
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7
-    - name: Install dpl
-      run: gem install dpl
-    - name: Install Heroku CLI
-      run: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-    - name: Deploy to Heroku
-      run: dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-    - uses: chrnorm/deployment-action@releases/v1
-      name: Create GitHub deployment
-      with:
-        initial_status: success
-        token: ${{ github.token }}
-        target_url: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
-        environment: production
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: &quot;2.7&quot;
+      - name: Install dpl
+        run: gem install dpl
+      - name: Deploy to Heroku
+        run: dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        with:
+          initial_status: success
+          token: ${{ github.token }}
+          target_url: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
+          environment: production
 </code></pre>
 <p>After you perform all the procedures above, your new Spring Boot application is ready to deploy in Heroku.
 If you open the GitHub Actions tab in your repository, it seems that a <em>workflow</em> is already running,
