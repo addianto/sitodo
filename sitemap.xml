@@ -46,6 +46,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sitodo-example.herokuapp.com/bootcamp/day-2/database-migration/</loc>
+         <lastmod>2022-09-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sitodo-example.herokuapp.com/bootcamp/day-2/test-automation/</loc>
          <lastmod>2022-09-29</lastmod>
          <changefreq>daily</changefreq>

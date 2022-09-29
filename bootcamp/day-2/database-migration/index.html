@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://sitodo-example.herokuapp.com/bootcamp/day-2/database-migration/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Database Migration - Sitodo</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Database Migration";
+        var mkdocs_page_input_path = "bootcamp\\day-2\\database-migration.md";
+        var mkdocs_page_url = "/bootcamp/day-2/database-migration/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Sitodo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Home</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../..">Course Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day One</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/init-spring/">Initialise Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/hello-tdd/">Hello, TDD</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/qa-automation/">Deployment Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/basic-list/">Create a Basic Todo List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1/end-day-1/">Recap</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Day Two</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../test-automation/">Test Automation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../update-data-model/">One of Many Lists</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Sitodo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Database Migration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="database-migration">Database Migration</h1>
+<p>Each time you run the app locally, a new test database is created in-memory.
+The database only lives when the program is running.
+When you shut down the app, the database is cleared from the memory as well.
+While this makes it easy during tutorial, a real software deployment usually uses an actual database that persists the data in a storage medium.</p>
+<p>A Web application is usually connected to a database engine such as MySQL or PostgreSQL on the production environment.
+Obviously, we cannot always re-instantiate the database each time we perform deployment.
+There might be some actual customer data present in the database.
+Thus, it might cause grief, both for your company and the customer,
+if the data were deleted after your application re-created the database from scratch on the production environment.</p>
+<p>To help solve this problem, some frameworks support database migration tool.
+We can define a series of migration scripts to keep the database updated with the latest changes in the code.
+For example, we can ensure the table schema on the database is kept synchronized with the data models written in Java.
+If there is a change in the data model, the migration scripts can define operations to update the database schema.
+In addition, the migration scripts can also be used to populate the database with static data (such as a default admin user, reference entries, etc.).</p>
+<p>Spring Boot provides support to two database migration tools: <a href="https://www.liquibase.org/">Liquibase</a> and <a href="https://flywaydb.org/">Flyway</a>.
+In this tutorial, we will use Liquibase.
+First, create a new directory named <code>db</code> in <code>resources</code> directory of your production code.
+Then, create another directory named <code>changelog</code> inside the new <code>db</code> directory:</p>
+<pre><code class="language-shell"># (Mac OS/Linux/bash) the shell command equivalent to  the instruction above
+mkdir -p ./src/main/resources/db/changelog
+</code></pre>
+<p>Add a new YAML file named <code>db.changelog-master.yaml</code> in <code>changelog</code> directory:</p>
+<blockquote>
+<p>Note: Make sure you named the file correctly!
+By default, Spring Boot expects a Liquibase master migration script named <code>db.changelog-master.yaml</code>.</p>
+</blockquote>
+<pre><code class="language-yml">---
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: sitodo_maintainer
+      changes:
+        - createSequence:
+            sequenceName: hibernate_sequence
+            dataType: INTEGER
+            incrementBy: 1
+            startValue: 1
+            minValue: 1
+
+        - createTable:
+            tableName: todo_item
+            columns:
+              - column:
+                  name: id
+                  # Approximate the appropriate data type using existing types
+                  # from java.sql package: https://docs.oracle.com/en/java/javase/17/docs/api/java.sql/java/sql/Types.html
+                  type: INTEGER
+                  autoIncrement: true
+                  valueSequenceNext: hibernate_sequence
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_todo_item
+              - column:
+                  name: title
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+              - column:
+                  name: finished
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+        - createTable:
+            tableName: todo_list
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  autoIncrement: true
+                  valueSequenceNext: hibernate_sequence
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_todo_list
+        - createTable:
+            tableName: todo_list_items
+            columns:
+              - column:
+                  name: todo_list_id
+                  type: INTEGER
+                  constraints:
+                    foreignKeyName: fk_todo_list_items_todo_list
+                    referencedTableName: todo_list
+                    referencedColumnNames: id
+              - column:
+                  name: items_id
+                  type: INTEGER
+                  constraints:
+                    foreignKeyName: fk_todo_list_items_todo_item
+                    referencedTableName: todo_item
+                    referencedColumnNames: id
+      rollback:
+        - dropTable:
+            tableName: todo_list_items
+        - dropTable:
+            tableName: todo_list
+        - dropTable:
+            tableName: todo_item
+
+</code></pre>
+<p>Some database migration tools label their tools as database version control.
+You can think Liquibase migration scripts similar to Git commits.
+Each script may contain one or more <strong>changeset</strong> that will perform database-related operations.</p>
+<p>For example, the migration script above will do the following:</p>
+<ol>
+<li>Create a sequence in the database to keep track the auto-generated ID</li>
+<li>Create every table defined in <code>model</code> package</li>
+<li>Create a <strong>join table</strong> to handle one-to-many relationships between <code>TodoList</code> and <code>TodoItem</code></li>
+</ol>
+<p>The migration script also contains a rollback procedure that can be executed if you choose to do so via Maven command or Liquibase's CLI tool.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
