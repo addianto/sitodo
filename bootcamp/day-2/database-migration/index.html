@@ -70,7 +70,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#configure-in-memory-database">Configure In-Memory Database</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#executing-migration">Executing Migration</a>
+    <li class="toctree-l2"><a class="reference internal" href="#execute-migration-script">Execute Migration Script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#use-postgresql-database-on-heroku">Use PostgreSQL Database on Heroku</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-a-new-changeset">Create a New Changeset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#challenge-make-priority-attribute-usable-by-users">Challenge: Make Priority Attribute Usable by Users</a>
     </li>
     </ul>
                   </li>
@@ -117,7 +123,10 @@ In addition, the migration scripts can also be used to populate the database wit
 <h2 id="setting-up-liquibase">Setting Up Liquibase</h2>
 <p>Spring Boot provides support to two database migration tools: <a href="https://www.liquibase.org/">Liquibase</a> and <a href="https://flywaydb.org/">Flyway</a>.
 In this tutorial, we will use Liquibase.</p>
-<p>First, add a new dependency into <code>pom.xml</code>:</p>
+<p>First, create a new Git branch named <code>database-migration</code>:</p>
+<pre><code class="language-shell">git checkout -b database-migration
+</code></pre>
+<p>Add a new dependency into <code>pom.xml</code>:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.liquibase&lt;/groupId&gt;
     &lt;artifactId&gt;liquibase-core&lt;/artifactId&gt;
@@ -220,7 +229,7 @@ An example of executing a rollback script can be found at <a href="https://docs.
 <p>Add a configuration property into <code>application.properties</code> in <code>src/main/resources</code> directory:</p>
 <pre><code class="language-properties">spring.datasource.url=jdbc:h2:mem:sitodo
 </code></pre>
-<p>The configuration above will tells Spring Boot application to use a H2 in-memory database named <code>sitodo</code>.
+<p>The configuration above will tell Spring Boot application to use an H2 in-memory database named <code>sitodo</code>.
 If you want to actually store the data into a file named <code>sitodo.db</code>, change the <code>spring.datasource.url</code> value into:</p>
 <pre><code class="language-properties">spring.datasource.url=jdbc:h2:file:./sitodo
 </code></pre>
@@ -235,11 +244,114 @@ Update <code>.gitignore</code> and add these lines at the end of <code>.gitignor
 <p>Spring Boot also provides a console to access the H2 database when the application is running.
 To enable the console, add <code>spring.h2.console.enabled=true</code> into <code>application.properties</code>.
 The console can be accessed at <code>http://localhost:8080/h2-console</code>.</p>
-<h2 id="executing-migration">Executing Migration</h2>
+<h2 id="execute-migration-script">Execute Migration Script</h2>
 <p>In this tutorial, Liquibase migration scripts are executed automatically when the application is run.
 Try running the application and open the H2 database console to see the contents of the database.
 You will see a glimpse of how a database migration tool tracks changes to the database.
 They created a <code>CHANGELOG</code> table in the database to keep information related to the changes in the database.</p>
+<h2 id="use-postgresql-database-on-heroku">Use PostgreSQL Database on Heroku</h2>
+<p>Open Heroku dashboard and go to your app to check if your app has a Heroku Postgres.
+If your app on Heroku does not have Heroku Postgres included in the add-ons,
+you can install it from <strong>Resources</strong> tab.
+In <strong>Resources</strong> page, type <code>Postgres</code> into <strong>Add-ons</strong> text input field.
+Heroku will suggest several resources.
+Among them is Heroku Postgres, as depicted in the following screenshot:</p>
+<p><img alt="Screenshot of Heroku Postgres add-on" src="../images/coverage_intellij_1.png" /></p>
+<p>Choose <strong>Hobby Dev - Free</strong> plan and click <strong>Submit Order Form</strong> button.
+Heroku will create an instance of PostgreSQL and attach it to your application on Heroku.</p>
+<p>According to <a href="https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku">Heroku documentation</a>,
+Heroku will initialise several environment variables such as <code>SPRING_DATASOURCE_URL</code>, <code>SPRING_DATASOURCE_USERNAME</code>,
+and <code>SPRING_DATASOURCE_PASSWORD</code> that will override the configuration included in the app.
+The application should automatically switch to PostgreSQL when re-deployed to Heroku.
+The existing migration script will also initialise the database schema and sample data (if any) into the database.</p>
+<h2 id="create-a-new-changeset">Create a New Changeset</h2>
+<p>Now let us try making new changeset to demonstrate how a migration script changes a database.
+But first, make sure you have re-deployed your app to Heroku and make some sample todo items.</p>
+<p>Edit <code>TodoItem</code> class in <code>model</code> package by adding a new instance variable named <code>priority</code> with the type of <code>Integer</code>:</p>
+<pre><code class="language-java">// TodoItem.java
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@Entity
+@NoArgsConstructor
+public class TodoItem {
+    // Existing attributes omitted for brevity
+
+    @Column
+    private Integer priority = 0; // Valid values: [0, 1, 2]
+}
+</code></pre>
+<p>The new attribute will be used to describe the priority of a todo item.
+Since this is a new attribute that does not exist yet in the database,
+you need to create a changeset that will update the corresponding table with a new attribute.</p>
+<p>Open Liquibase master migration script (i.e. <code>db.changelog-master.yaml</code>) and write the new changeset:</p>
+<blockquote>
+<p>Note: Be careful when modifying <code>.yml</code>/<code>.yaml</code> files, especially regarding indentation.
+Make sure the level of indentation is correct for every entry.</p>
+</blockquote>
+<pre><code class="language-yml">---
+databaseChangeLog:
+    - changeSet:
+          id: 1
+          author: sitodo_maintainer
+          changes:
+              - # Omitted for brevity
+    - changeSet:
+          id: 2
+          author: your_name
+          changes:
+              - addColumn:
+                    tableName: todo_item
+                    columns:
+                        - column:
+                              name: priority
+                              type: INTEGER
+                              defaultValueNumeric: 0
+          rollback:
+              - dropColumn:
+                    tableName: todo_item
+                    columns:
+                        - column:
+                              name: priority
+</code></pre>
+<p>If you use a local, file-based H2 database, try testing the migration script by running the application.
+Then, open H2 console to inspect the database.
+Verify that the corresponding table for <code>TodoItem</code> object has a new attribute named <code>priority</code>.
+All existing rows should also have new attribute with default value set to <code>0</code>.</p>
+<p>If data migration has been successfully confirmed in the local database, save your work into a new Git commit.
+Then, push the feature branch (i.e. <code>database-migration</code>) to GitHub:</p>
+<pre><code class="language-shell">git add src/main/java/
+git add src/main/resources/
+git commit
+git push origin database-migration
+</code></pre>
+<p>Make sure the tests still pass and make a new Pull Request to merge the feature branch into the main branch.</p>
+<h2 id="challenge-make-priority-attribute-usable-by-users">Challenge: Make Priority Attribute Usable by Users</h2>
+<p>Implement a new feature that lets users do the following:</p>
+<ul>
+<li>See the priority on each todo item</li>
+<li>Assign a priority value when they create a new todo item</li>
+</ul>
+<p>Start implementing the feature by creating a new branch:</p>
+<pre><code class="language-shell">git checkout -b feature/create-read-priority
+</code></pre>
+<p>Work in the new branch. You may need to modify the following files:</p>
+<ul>
+<li><code>list.html</code> : Add a new column in the table for showing the priority value,
+   and add another input text field to contain the priority value for a new todo item</li>
+<li><code>TodoListController.java</code> and <code>TodoListControllerTest.java</code> : Update the method that
+   handles HTTP POST submission containing the new todo item, and also update the method
+   that returns the list view</li>
+</ul>
+<p>Once you are done, save your work as commit and push it to GitHub:</p>
+<pre><code class="language-shell">git add &lt;path to modified/new files&gt;
+git commit
+git push origin feature/create-read-priority
+</code></pre>
+<p>Make sure the tests still pass and make a new Pull Request to merge the feature branch into the main branch.</p>
               
             </div>
           </div><footer>
