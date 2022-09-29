@@ -21,7 +21,7 @@ This is to ensure any ongoing development will not break the application that bu
 ## Data Persistence Layer
 
 Let us start from the data persistence layer.
-Open a shell (or terminal in the IDE) and create a new branch named `update-data-model` using `git branch` and `git checkout` commands:
+Open a shell (or terminal in the IDE) and create a new branch named `todo-list-v2` using `git branch` and `git checkout` commands:
 
 ```shell
 git branch todo-list-v2
@@ -364,7 +364,10 @@ public class TodoListController {
                              @RequestParam("finished") Boolean finished) {
         return ""; // TODO: Implement me!
     }
-
+    
+    // TODO: Create a method named deleteItem() that will remove a todo item from a todo list.
+    //       The arguments can be similar to the updateItem() above.
+    
     @ExceptionHandler
     public String handleException(NoSuchElementException exception) {
         return "404";
@@ -469,6 +472,8 @@ class TodoListControllerTest {
     void updateItem_ok() throws Exception {
         // TODO: Implement me!
     }
+    
+    // TODO: Create the tests for ensuring the correctness of deleteItem() method from the controller.
 
     private TodoList createMockTodoList(Long id, TodoItem ... items) {
         TodoList mockTodoList = mock(TodoList.class);
@@ -495,7 +500,7 @@ Similar to the previous layer, there are some TODO comments and methods need to 
 
 ## View
 
-Update `list.html` view in the `templates` directory with the following updated HTML:
+Update `list.html` view in the `templates` directory with the updated HTML:
 
 ```html
 <!doctype html>
