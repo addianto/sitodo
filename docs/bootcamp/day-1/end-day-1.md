@@ -6,6 +6,12 @@ Congratulations! You have reached the end of mandatory tasks for Day 1.
 
 You will continue work on the todo list app.
 You might have noticed that the current iteration of the app can only contain a single todo list.
+Tomorrow you will learn how to complete the todo list functionality by implementing the following features:
+
+-  Update and delete a todo list item
+-  Automate test execution using GitHub Actions
+-  Create a database migration
+
 Tomorrow you will learn how to implement a multiple todo lists functionality and begin to refactor the current app to use PostgreSQL database.
 
 ## Additional Material: Functional Test

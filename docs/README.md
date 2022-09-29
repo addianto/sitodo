@@ -63,6 +63,7 @@ The course will include:
 2. Initialise up a Spring Boot project
 3. Introduction to test-driven development (TDD)
 4. Create a continuous integration and deployment pipeline (CI/CD)
+5. Exercise a Git workflow such as Feature Branch
 
 There will be some additional challenges for participants, such as:
 

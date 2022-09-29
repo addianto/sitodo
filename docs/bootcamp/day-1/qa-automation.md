@@ -35,6 +35,7 @@ This file is used to execute _deployment_ by _runner_ from GitHub Actions.
 The content of the `dpl.yml` is as follows:
 
 ```yml
+---
 name: Deploy
 
 on:
@@ -43,30 +44,29 @@ on:
       - main
 
 jobs:
-  Deployment:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-22.04
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.7
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7
-    - name: Install dpl
-      run: gem install dpl
-    - name: Install Heroku CLI
-      run: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-    - name: Deploy to Heroku
-      run: dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-    - uses: chrnorm/deployment-action@releases/v1
-      name: Create GitHub deployment
-      with:
-        initial_status: success
-        token: ${{ github.token }}
-        target_url: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
-        environment: production
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.7"
+      - name: Install dpl
+        run: gem install dpl
+      - name: Deploy to Heroku
+        run: dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        with:
+          initial_status: success
+          token: ${{ github.token }}
+          target_url: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
+          environment: production
 ```
 
 After you perform all the procedures above, your new Spring Boot application is ready to deploy in Heroku.
