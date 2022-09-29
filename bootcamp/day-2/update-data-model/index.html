@@ -437,6 +437,9 @@ public class TodoListController {
         return &quot;&quot;; // TODO: Implement me!
     }
 
+    // TODO: Create a methood named deleteItem() that will remove a todo item from a todo list.
+    //       The arguments can be similar to the updateItem() above.
+
     @ExceptionHandler
     public String handleException(NoSuchElementException exception) {
         return &quot;404&quot;;
@@ -538,6 +541,8 @@ class TodoListControllerTest {
     void updateItem_ok() throws Exception {
         // TODO: Implement me!
     }
+
+    // TODO: Create the tests for ensuring the correctness of deleteItem() method from the controller.
 
     private TodoList createMockTodoList(Long id, TodoItem ... items) {
         TodoList mockTodoList = mock(TodoList.class);
