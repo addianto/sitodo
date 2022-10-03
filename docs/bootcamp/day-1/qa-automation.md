@@ -1,4 +1,4 @@
-# Quality Assurance & Automation
+# Deployment Automation
 
 In order to make the production code can be built and deployed on Heroku,
 we have to follow the rules dictated by the service provider (i.e. Heroku).

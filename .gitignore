@@ -201,3 +201,7 @@ replay_pid*
 
 # Static site
 site/
+
+# H2 database file
+sitodo.db*
+sitodo.*.db

@@ -1,4 +1,4 @@
-# One of Many Lists
+# Create a One-To-Many List
 
 Today you will update the application by making the user able to create multiple lists each time they open the app.
 At the same time, you will practice a Git workflow called **Feature Branch** workflow.

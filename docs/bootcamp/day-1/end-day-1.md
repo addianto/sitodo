@@ -1,6 +1,6 @@
 # End of Day 1
 
-Congratulations! You have reached the end of mandatory tasks for Day 1.
+Congratulations! You have reached the end of Day 1.
 
 ## Agenda for Day 2
 

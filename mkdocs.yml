@@ -12,17 +12,8 @@ nav:
       - Deployment Automation: bootcamp/day-1/qa-automation.md
       - Create a Basic Todo List: bootcamp/day-1/basic-list.md
       - Recap: bootcamp/day-1/end-day-1.md
-      # 1 jam course, 1 jam mengarahkan
-      # 4 jam mengerjakan sesuai instruksi + 2 jam additional
-      #   (bagi peserta yang butuh tantangan/butuh bantuan tambahan)
   - Day Two:
       - Test Automation: bootcamp/day-2/test-automation.md
-      - One of Many Lists: bootcamp/day-2/update-data-model.md
-      # 1 jam course, 1 jam mengarahkan
-      # 4 jam mengerjakan sesuai instruksi + 2 jam additional
-      #   (bagi peserta yang butuh tantangan/butuh bantuan tambahan)
-      # Ide untuk hari kedua: badges, README, GitHub Actions
-  #- Extra Challenges:
-  #    - Functional Test: extra/functional-test.md
-  #    - Analyse Code Quality: extra/codeql.md
-  #    - User Authentication: extra/auth.md
+      - One-to-Many List: bootcamp/day-2/update-data-model.md
+      - Database Migration: bootcamp/day-2/database-migration.md
+      - Recap: bootcamp/day-2/end-day-2.md

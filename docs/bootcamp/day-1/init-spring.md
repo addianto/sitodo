@@ -89,7 +89,10 @@ git commit
 
 Go to GitHub and create a new repository.
 You can name it anything, but try to make it descriptive.
-For the purpose of the bootcamp, you can name your new repository as "Sitodo".
+For the purpose of the bootcamp, name your new repository as `sitodo-INITIAL` where `INITIAL` is your abbreviated name.
+Then, uncheck the option to create a README file, add no `.gitignore` file, and do not add any license for now:
+
+![An example of GitHub new repository configuration](./images/github_init.png)
 
 Once you created the new repository, take note of its clone URL on GitHub.
 Pick the HTTPS clone URL if you are new to Git and GitHub.
