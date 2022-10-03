@@ -24,8 +24,7 @@
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Status</th>
-            <th scope="col">Update</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -41,11 +40,6 @@
             <td th:unless="${item.finished}">
                 <a class="sitodo-finish-link" th:href="@{/list/{list_id}/update/{item_id}(list_id=${todoList.id},item_id=${item.id},finished='true')}">
                     <span>Mark as 'Finished'</span>
-                </a>
-            </td>
-            <td>
-                <a class="sitodo-finish-link"> <!-- TODO: Implement a link that will trigger the delete todo item operation on the controller -->
-                    <span>Delete</span>
                 </a>
             </td>
         </tr>
