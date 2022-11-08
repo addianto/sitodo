@@ -25,25 +25,25 @@ class SeeMotivationMessageTest extends BaseFunctionalTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(SeeMotivationMessageTest.class);
 
-    @Value("${sitodo.motivation.empty}")
+    @Value("${sitodo.motivation.empty:EMPTY}")
     private String emptyListMessage;
 
-    @Value("${sitodo.motivation.noFinished}")
+    @Value("${sitodo.motivation.noFinished:NO_FINISH}")
     private String noFinishedMessage;
 
-    @Value("${sitodo.motivation.halfFinished}")
+    @Value("${sitodo.motivation.halfFinished:HALF_FINISH}")
     private String halfFinishedMessage;
 
-    @Value("${sitodo.motivation.someFinished}")
+    @Value("${sitodo.motivation.someFinished:SOME_FINISH}")
     private String someFinishedMessage;
 
-    @Value("${sitodo.motivation.allFinished}")
+    @Value("${sitodo.motivation.allFinished:ALL_FINISH}")
     private String allFinishedMessage;
 
-    @Value("${sitodo.motivation.fewItems}")
+    @Value("${sitodo.motivation.fewItems:FEW_ITEMS}")
     private String fewItemsMessage;
 
-    @Value("${sitodo.motivation.manyItems}")
+    @Value("${sitodo.motivation.manyItems:MANY_ITEMS}")
     private String manyItemsMessage;
 
     @Value("${sitodo.motivation.fewItemsThreshold:5}")
@@ -138,11 +138,4 @@ class SeeMotivationMessageTest extends BaseFunctionalTest {
             containsString(halfFinishedMessage)
         ));
     }
-
-    // The motivation message is not a separate user story. It is actually
-    // a side-effect that experienced by user when adding and updating the
-    // items. Considering the cost of functional (Selenium) tests in terms
-    // of test execution speed and complexity, it might be better if the
-    // motivation message is verified alongside with the actions performed
-    // during adding and updating the items.
 }

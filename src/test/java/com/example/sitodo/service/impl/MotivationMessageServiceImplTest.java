@@ -13,30 +13,31 @@ import java.util.stream.IntStream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("unit")
 @SpringBootTest
 class MotivationMessageServiceImplTest {
 
-    @Value("${sitodo.motivation.empty}")
+    @Value("${sitodo.motivation.empty:EMPTY}")
     private String emptyListMessage;
 
-    @Value("${sitodo.motivation.noFinished}")
+    @Value("${sitodo.motivation.noFinished:NO_FINISH}")
     private String noFinishedMessage;
 
-    @Value("${sitodo.motivation.allFinished}")
+    @Value("${sitodo.motivation.allFinished:ALL_FINISH}")
     private String allFinishedMessage;
 
-    @Value("${sitodo.motivation.halfFinished}")
+    @Value("${sitodo.motivation.halfFinished:HALF_FINISH}")
     private String halfFinishedMessage;
 
-    @Value("${sitodo.motivation.someFinished}")
+    @Value("${sitodo.motivation.someFinished:SOME_FINISH}")
     private String someFinishedMessage;
 
-    @Value("${sitodo.motivation.fewItems}")
+    @Value("${sitodo.motivation.fewItems:FEW_ITEMS}")
     private String fewItemsMessage;
 
-    @Value("${sitodo.motivation.manyItems}")
+    @Value("${sitodo.motivation.manyItems:MANY_ITEMS}")
     private String manyItemsMessage;
 
     @Value("${sitodo.motivation.manyItemsThreshold:10}")
@@ -48,20 +49,13 @@ class MotivationMessageServiceImplTest {
     @Test
     @DisplayName("Given an empty list, computeMotivationMessage should produce the correct message")
     void computeMotivationMessage_emptyList() {
-        String message = motivationMessageService.computeMotivationMessage(0, 0);
-
-        assertThat(message, containsString(emptyListMessage));
+        assertTrue(true, "TODO: Implementasi test!");
     }
 
     @Test
     @DisplayName("Given a list with few items all unfinished, computeMotivationMessage should produce the correct message")
     void computeMotivationMessage_fewItems_noFinished() {
-        String message = motivationMessageService.computeMotivationMessage(4, 0);
-
-        assertThat(message, allOf(
-            containsString(fewItemsMessage),
-            containsString(noFinishedMessage)
-        ));
+        assertTrue(true, "TODO: Implementasi test!");
     }
 
     @Test

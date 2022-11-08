@@ -7,6 +7,7 @@ import com.example.sitodo.model.TodoItem;
 import com.example.sitodo.model.TodoList;
 import com.example.sitodo.repository.TodoListRepository;
 import com.example.sitodo.service.TodoListService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@Slf4j
 public class TodoListServiceImpl implements TodoListService {
 
     private TodoListRepository todoListRepository;
@@ -31,6 +33,7 @@ public class TodoListServiceImpl implements TodoListService {
         Optional<TodoList> queryResult = todoListRepository.findById(listId);
 
         if (queryResult.isEmpty()) {
+            log.warn("Cannot find a todo list with ID {}", listId);
             throw new NoSuchElementException();
         }
 
@@ -56,6 +59,7 @@ public class TodoListServiceImpl implements TodoListService {
         Optional<TodoList> queryResult = todoListRepository.findById(listId);
 
         if (queryResult.isEmpty()) {
+            log.warn("Cannot find a todo list with ID {}", listId);
             throw new NoSuchElementException();
         }
 
@@ -74,6 +78,7 @@ public class TodoListServiceImpl implements TodoListService {
         Optional<TodoList> queryResult = todoListRepository.findById(listId);
 
         if (queryResult.isEmpty()) {
+            log.warn("Cannot find a todo list with ID {}", listId);
             throw new NoSuchElementException();
         }
 

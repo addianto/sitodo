@@ -45,6 +45,8 @@ public class MotivationMessageServiceImpl implements MotivationMessageService {
         if (total == 0) {
             output += emptyListMessage;
         } else if (total < manyItemsThreshold) {
+            // TODO: Bagian alur pembuatan pesan berikut bisa diperbaiki untuk mengurangi
+            //       duplikasi dan kompleksitas kode.
             output += fewItemsMessage;
 
             if (finished == total) {
@@ -61,6 +63,8 @@ public class MotivationMessageServiceImpl implements MotivationMessageService {
                 output += someFinishedMessage;
             }
         } else {
+            // TODO: Bagian alur pembuatan pesan berikut bisa diperbaiki untuk mengurangi
+            //       duplikasi dan kompleksitas kode.
             output += manyItemsMessage;
 
             if (finished == total) {
@@ -82,4 +86,20 @@ public class MotivationMessageServiceImpl implements MotivationMessageService {
 
         return output;
     }
+
+    private String createMessageByNumberOfFinishedItems(long totalItems, long totalFinishedItems,
+                                                        String message) {
+        if (totalFinishedItems == totalItems) {
+            message += " " + allFinishedMessage;
+        } else if (totalFinishedItems == 0) {
+            message += " " + noFinishedMessage;
+        } else if (totalFinishedItems < totalItems && totalFinishedItems >= totalItems / 2) {
+            message += " " + halfFinishedMessage;
+        } else {
+            message += someFinishedMessage;
+        }
+
+        return message;
+    }
+
 }
