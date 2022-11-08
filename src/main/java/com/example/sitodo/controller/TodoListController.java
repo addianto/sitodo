@@ -4,6 +4,7 @@ import com.example.sitodo.dto.TodoListDto;
 import com.example.sitodo.form.TodoItemForm;
 import com.example.sitodo.service.MotivationMessageService;
 import com.example.sitodo.service.TodoListService;
+import com.example.sitodo.util.VisitorCounter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,10 @@ public class TodoListController {
 
     private MotivationMessageService motivationMessageService;
 
+    // TODO: Perbaiki isu duplikasi kode dan perbaikan abstraksi fungsi terkait
+    //       perhitungan jumlah kunjungan.
+    private VisitorCounter visitorCounter;
+
     @Autowired
     public void setTodoListService(TodoListService todoListService) {
         this.todoListService = todoListService;
@@ -32,10 +37,16 @@ public class TodoListController {
         this.motivationMessageService = motivationMessageService;
     }
 
+    @Autowired
+    public void setVisitorCounter(VisitorCounter visitorCounter) {
+        this.visitorCounter = visitorCounter;
+    }
+
     @GetMapping("/list")
     public String showList(Model model) {
         model.addAttribute("todoItemForm", new TodoItemForm());
         model.addAttribute("motivationMessage", motivationMessageService.computeMotivationMessage(0, 0));
+        model.addAttribute("visitorCount", visitorCounter.getCount().incrementAndGet());
 
         return "list";
     }
@@ -48,14 +59,18 @@ public class TodoListController {
         model.addAttribute("todoList", foundTodoList);
         model.addAttribute("todoItemForm", new TodoItemForm());
         model.addAttribute("motivationMessage", motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));
+        model.addAttribute("visitorCount", visitorCounter.getCount().incrementAndGet());
 
         return "list";
     }
 
     @PostMapping("/list")
-    public String newItem(@Valid TodoItemForm todoItemForm, BindingResult bindingResult) {
+    public String newItem(@Valid TodoItemForm todoItemForm, BindingResult bindingResult,
+                          Model model) {
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> log.warn(error.toString()));
+            model.addAttribute("visitorCount", visitorCounter.getCount().incrementAndGet());
+
             return "list";
         }
 
@@ -76,6 +91,7 @@ public class TodoListController {
 
             model.addAttribute("todoList", foundTodoList);
             model.addAttribute("motivationMessage", motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));
+            model.addAttribute("visitorCount", visitorCounter.getCount().incrementAndGet());
 
             return "list";
         }

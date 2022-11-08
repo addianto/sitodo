@@ -2,8 +2,6 @@ package com.example.sitodo.controller;
 
 import com.example.sitodo.dto.TodoItemDto;
 import com.example.sitodo.dto.TodoListDto;
-import com.example.sitodo.model.TodoItem;
-import com.example.sitodo.model.TodoList;
 import com.example.sitodo.service.MotivationMessageService;
 import com.example.sitodo.service.TodoListService;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +18,6 @@ import java.util.NoSuchElementException;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.TEXT_HTML;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -119,24 +116,5 @@ class TodoListControllerTest {
         // object that supposedly has been modified to the controller. The controller
         // will use the mock object from service layer as input for the view layer.
         // The view layer then use the mock object as data model for rendering the HTML.
-    }
-
-    private TodoList createMockTodoList(Long id, TodoItem... items) {
-        TodoList mockTodoList = mock(TodoList.class);
-
-        when(mockTodoList.getId()).thenReturn(id);
-        when(mockTodoList.getItems()).thenReturn(List.of(items));
-
-        return mockTodoList;
-    }
-
-    private TodoItem createMockTodoItem(Long id, String title) {
-        TodoItem mockTodoItem = mock(TodoItem.class);
-
-        when(mockTodoItem.getId()).thenReturn(id);
-        when(mockTodoItem.getTitle()).thenReturn(title);
-        when(mockTodoItem.getFinished()).thenCallRealMethod();
-
-        return mockTodoItem;
     }
 }

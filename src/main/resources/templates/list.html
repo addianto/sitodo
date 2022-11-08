@@ -50,6 +50,7 @@
     </table>
     <form th:replace="fragments/list.html :: entry">
     </form>
+    <p id="visitor_count" th:text="${visitorCount}">This page has been visited n times!</p>
 </div>
 <script th:replace="fragments/base.html :: script.bootstrap-js"></script>
 </body>

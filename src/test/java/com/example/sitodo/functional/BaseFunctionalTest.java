@@ -56,8 +56,6 @@ public abstract class BaseFunctionalTest {
     @AfterEach
     void tearDown() {
         closeWebDriver();
-        // TODO Figure out how to rollback the database at the end of each
-        //      functional test case
     }
 
     protected void postNewTodoItem(String item) {

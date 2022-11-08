@@ -49,13 +49,16 @@ class MotivationMessageServiceImplTest {
     @Test
     @DisplayName("Given an empty list, computeMotivationMessage should produce the correct message")
     void computeMotivationMessage_emptyList() {
-        assertTrue(true, "TODO: Implementasi test!");
+        // TODO: Implementasi test sesungguhnya, yaitu method computeMotivationMessage
+        //       harus mengembalikan pesan motivasi yang tepat apabila todo list kosong.
     }
 
     @Test
     @DisplayName("Given a list with few items all unfinished, computeMotivationMessage should produce the correct message")
     void computeMotivationMessage_fewItems_noFinished() {
-        assertTrue(true, "TODO: Implementasi test!");
+        // TODO: Implementasi test sesungguhnya, yaitu method computeMotivationMessage
+        //       harus mengembalikan pesan motivasi yang tepat apabila todo list mengandung
+        //       sejumlah kecil todo item dan belum ada yang todo item yang selesai.
     }
 
     @Test

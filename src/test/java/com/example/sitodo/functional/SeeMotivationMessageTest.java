@@ -109,7 +109,6 @@ class SeeMotivationMessageTest extends BaseFunctionalTest {
         ));
 
         // Mark half of the items as finished sequentially
-        // TODO: Refactor to use Selenide
         IntStream.range(0, items.size() / 2).forEach(i ->
             $(By.tagName("tbody")).findAll(By.tagName("tr"))
                 .stream()
