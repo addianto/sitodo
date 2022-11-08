@@ -101,5 +101,4 @@ public class MotivationMessageServiceImpl implements MotivationMessageService {
 
         return message;
     }
-
 }
