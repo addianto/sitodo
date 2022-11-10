@@ -39,12 +39,7 @@ class TodoListControllerTest {
     @Test
     @DisplayName("HTTP GET '/list' retrieves list view")
     void showList_resolvesToIndex() throws Exception {
-        mockMvc.perform(get("/list")).andExpectAll(
-            status().isOk(),
-            content().contentTypeCompatibleWith(TEXT_HTML),
-            content().encoding(UTF_8),
-            view().name("list")
-        );
+        // TODO : check if '/list' is access, return status OK and return 'list.html'
     }
 
     @Test
@@ -93,21 +88,11 @@ class TodoListControllerTest {
             .thenReturn(todoListSingleItem);
         when(todoListService.getTodoListById(1L)).thenReturn(todoListSingleItem);
 
-        mockMvc.perform(get("/list/1/update/1?finished=true")).andExpectAll(
-            status().is3xxRedirection(),
-            redirectedUrl("/list/1")
-        );
+        // TODO: create test: when the update is successful,
+        // then return redirect status (3xx) and redirect to '/list/{id}'
 
-        mockMvc.perform(get("/list/1")).andExpectAll(
-            status().isOk(),
-            content().contentTypeCompatibleWith(TEXT_HTML),
-            content().encoding(UTF_8),
-            content().string(containsString("<table")),
-            content().string(containsString("<tr")),
-            content().string(containsString("Buy milk")),
-            content().string(containsString("Finished")),
-            content().string(containsString("</html>"))
-        );
+        // TODO: create test: after redirect to '/list/{id}', check the contains of the TodoList
+        // Hint : use todoListSingleItem
 
         // Note: Notice that we don't actually verify whether the item was successfully
         // updated. It is all pre-scripted in the mock object. We dictate how the SUT
