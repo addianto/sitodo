@@ -75,12 +75,9 @@ class MotivationMessageServiceImplTest {
     @Test
     @DisplayName("Given a list with few items half finished, computeMotivationMessage should produce the correct message")
     void computeMotivationMessage_fewItems_halfFinished() {
-        String message = motivationMessageService.computeMotivationMessage(4, 2);
-
-        assertThat(message, allOf(
-            containsString(fewItemsMessage),
-            containsString(halfFinishedMessage)
-        ));
+        // TODO: Implementasi test sesungguhnya, yaitu method computeMotivationMessage
+        //       harus mengembalikan pesan motivasi yang tepat apabila todo list mengandung
+        //       sejumlah kecil todo item dan setengah dari semua todo item atau lebih telah selesai.
     }
 
     @Test
@@ -118,12 +115,9 @@ class MotivationMessageServiceImplTest {
             .mapToObj(i -> "Task " + i)
             .toArray(String[]::new);
 
-        String message = motivationMessageService.computeMotivationMessage(items.length, items.length);
-
-        assertThat(message, allOf(
-            containsString(manyItemsMessage),
-            containsString(allFinishedMessage)
-        ));
+        // TODO: Implementasi test sesungguhnya, yaitu method computeMotivationMessage
+        //       harus mengembalikan pesan motivasi yang tepat apabila todo list mengandung
+        //       sejumlah besar todo item dan semua todo item telah selesai.
     }
 
     @Test
@@ -150,11 +144,8 @@ class MotivationMessageServiceImplTest {
             .mapToObj(i -> "Task " + i)
             .toArray(String[]::new);
 
-        String message = motivationMessageService.computeMotivationMessage(items.length, 1);
-
-        assertThat(message, allOf(
-            containsString(manyItemsMessage),
-            containsString(someFinishedMessage)
-        ));
+        // TODO: Implementasi test sesungguhnya, yaitu method computeMotivationMessage
+        //       harus mengembalikan pesan motivasi yang tepat apabila todo list mengandung
+        //       sejumlah besar todo item dan sebagian kecil dari todo item telah selesai.
     }
 }
