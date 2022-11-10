@@ -80,7 +80,6 @@ class TodoListControllerTest {
         when(todoListService.getTodoListById(anyLong())).thenThrow(NoSuchElementException.class);
 
         mockMvc.perform(get("/list/1")).andExpectAll(
-            status().isNotFound(),
             content().string(containsString("Not Found")),
             view().name("404")
         );
