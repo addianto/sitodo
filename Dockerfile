@@ -11,8 +11,18 @@ RUN ./mvnw ${MAVEN_CLI_OPTS} -DskipTests clean package
 
 FROM docker.io/library/eclipse-temurin:${JAVA_VERSION}-jre-alpine AS runner
 
+ARG USER_NAME=sitodo
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+
+RUN addgroup -g ${USER_GID} ${USER_NAME} \
+    && adduser -h /opt/sitodo -D -u ${USER_UID} -G ${USER_NAME} ${USER_NAME}
+
+USER ${USER_NAME}
 WORKDIR /opt/sitodo
-COPY --from=builder /src/sitodo/target/*.jar app.jar
+COPY --from=builder --chown=${USER_UID}:${USER_GID} /src/sitodo/target/*.jar app.jar
+
+EXPOSE 8080
 
 ENTRYPOINT ["java"]
 CMD ["-jar", "app.jar"]
