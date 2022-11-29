@@ -26,3 +26,7 @@ EXPOSE 8080
 
 ENTRYPOINT ["java"]
 CMD ["-jar", "app.jar"]
+
+LABEL org.opencontainers.image.source="https://github.com/addianto/sitodo" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.title="Sitodo"
