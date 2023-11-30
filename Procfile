@@ -1,1 +1,1 @@
-web: java -jar target/sitodo-*.jar --server.port=$PORT
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/sitodo-*.jar
