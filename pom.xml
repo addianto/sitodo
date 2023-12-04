@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>sitodo</artifactId>
-	<version>0.2.3-SNAPSHOT</version>
+	<version>0.2.4-SNAPSHOT</version>
 	<name>sitodo</name>
 	<description>A basic todo app for teaching basic Web programming, Git workflows, and CI/CD. Heavily inspired by the
 		running example in &quot;Test-Driven Development with Python&quot; book by Harry Percival.
@@ -21,6 +21,10 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.organization>addianto-github</sonar.organization>
 		<sonar.projectKey>addianto_sitodo</sonar.projectKey>
+		<!-- Serenity & Cucumber-related configuration properties -->
+		<serenity.version>4.0.15</serenity.version>
+		<cucumber-junit-platform-engine.version>7.14.0</cucumber-junit-platform-engine.version>
+		<webdriver.base.url></webdriver.base.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -75,9 +79,34 @@
 			<version>6.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Serenity & Cucumber-related dependencies -->
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-cucumber</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-screenplay</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-screenplay-webdriver</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-ensure</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
-	<!-- TODO Add Liquibase migration tasks (create, rollback) in pom.xml -->
 	<build>
 		<plugins>
 			<plugin>
