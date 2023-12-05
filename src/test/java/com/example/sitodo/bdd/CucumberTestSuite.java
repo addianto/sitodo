@@ -1,17 +1,20 @@
 package com.example.sitodo.bdd;
 
-import io.cucumber.junit.CucumberOptions;
-import net.serenitybdd.cucumber.CucumberWithSerenity;
-import org.junit.runner.RunWith;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
 /**
  * The test runner class that runs the executable scenarios,
  * i.e. the feature files written in Gherkin format.
  */
-@RunWith(CucumberWithSerenity.class) // Runs the test suite using the test runner provided by Serenity
-@CucumberOptions(
-    plugin = {"pretty"},
-    features = "src/test/resources/features"
-)
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("/features")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME,
+    value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:target/test-results/timeline")
 public class CucumberTestSuite {
 }
