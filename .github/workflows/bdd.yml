@@ -1,6 +1,8 @@
 ---
 name: BDD
 
+# TODO: Only run after successful deployment of the main branch
+# Reference: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run
 on:
   deployment_status
 
