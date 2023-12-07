@@ -1,0 +1,16 @@
+---
+name: Reporting
+
+on:
+  workflow_run:
+    types: [completed]
+    workflows:
+      - Continuous Integration (CI)
+      - BDD
+
+jobs:
+  report:
+    name: Publish test reports
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "TODO"
