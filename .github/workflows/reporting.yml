@@ -5,7 +5,6 @@ on:
   workflow_run:
     types: [completed]
     workflows:
-      - Continuous Integration (CI)
       - BDD
 
 permissions:
@@ -18,10 +17,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Download test reports
-        uses: actions/download-artifact@v3
+      - name: Download CI reports
+        uses: dawidd6/action-download-artifact@v2.9.0
         with:
+          branch: main
+          name: surefire-jacoco-reports
           path: tmp
+          workflow: ci.yml
+      - name: Download BDD test reports
+        uses: dawidd6/action-download-artifact@v2.9.0
+        with:
+          branch: main
+          name: serenity-reports
+          path: tmp
+          workflow: bdd.yml
       - name: Organise test reports
         run: |
           mkdir -p target/site
