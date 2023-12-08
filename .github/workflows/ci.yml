@@ -62,7 +62,7 @@ jobs:
       - name: Save test reports as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: surefire-jacoco
+          name: surefire-jacoco-reports
           path: |
             target/site/surefire/
             target/site/jacoco/
