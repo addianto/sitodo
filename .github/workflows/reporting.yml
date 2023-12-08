@@ -2,9 +2,9 @@
 name: Reporting
 
 on:
-  push:
-    branches:
-      - chore/fix-test-reporting
+  workflow_run:
+    types: [ completed ]
+    workflows: [ BDD ]
 
 permissions:
   contents: write
