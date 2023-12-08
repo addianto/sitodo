@@ -2,7 +2,9 @@
 name: Reporting
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - chore/fix-test-reporting
 
 permissions:
   contents: write
