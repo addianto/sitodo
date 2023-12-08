@@ -40,47 +40,48 @@ import org.springframework.stereotype.Service;
     public String computeMotivationMessage(long total, long finished) {
 <span class="fc" id="L41">        log.debug(&quot;Total Items: {}; Total Finished Items: {}&quot;, total, finished);</span>
 
-<span class="fc" id="L43">        String output = &quot;&quot;; // TODO: Replace with StringBuffer / StringBuilder</span>
+<span class="fc" id="L43">        StringBuilder output = new StringBuilder();</span>
 
-<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (total == 0) {</span>
-<span class="fc" id="L46">            output += emptyListMessage;</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">        } else if (total &lt; manyItemsThreshold) {</span>
-<span class="fc" id="L48">            output += fewItemsMessage;</span>
+        // The following conditional blocks are intentionally bad to illustrate code example with high cognitive complexity.
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (total == 0) {</span>
+<span class="fc" id="L47">            output.append(emptyListMessage);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        } else if (total &lt; manyItemsThreshold) {</span>
+<span class="fc" id="L49">            output.append(fewItemsMessage);</span>
 
-<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (finished == total) {</span>
-<span class="fc" id="L51">                output += &quot; &quot; + allFinishedMessage;</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">            } else if (finished == 0) {</span>
-<span class="fc" id="L53">                output += &quot; &quot; + noFinishedMessage;</span>
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            } else if (finished &lt; total) {</span>
-<span class="fc bfc" id="L55" title="All 2 branches covered.">                if (finished &gt;= total / 2) {</span>
-<span class="fc" id="L56">                    output += &quot; &quot; + halfFinishedMessage;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (finished == total) {</span>
+<span class="fc" id="L52">                output.append(&quot; &quot;).append(allFinishedMessage);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            } else if (finished == 0) {</span>
+<span class="fc" id="L54">                output.append(&quot; &quot;).append(noFinishedMessage);</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            } else if (finished &lt; total) {</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                if (finished &gt;= total / 2) {</span>
+<span class="fc" id="L57">                    output.append(&quot; &quot;).append(halfFinishedMessage);</span>
                 } else {
-<span class="fc" id="L58">                    output += someFinishedMessage;</span>
+<span class="fc" id="L59">                    output.append(someFinishedMessage);</span>
                 }
             } else {
-<span class="nc" id="L61">                output += someFinishedMessage;</span>
+<span class="nc" id="L62">                output.append(someFinishedMessage);</span>
             }
         } else {
-<span class="fc" id="L64">            output += manyItemsMessage;</span>
+<span class="fc" id="L65">            output.append(manyItemsMessage);</span>
 
-<span class="fc bfc" id="L66" title="All 2 branches covered.">            if (finished == total) {</span>
-<span class="fc" id="L67">                output += &quot; &quot; + allFinishedMessage;</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">            } else if (finished == 0) {</span>
-<span class="fc" id="L69">                output += &quot; &quot; + noFinishedMessage;</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            } else if (finished &lt; total) {</span>
-<span class="fc bfc" id="L71" title="All 2 branches covered.">                if (finished &gt;= total / 2) {</span>
-<span class="fc" id="L72">                    output += &quot; &quot; + halfFinishedMessage;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            if (finished == total) {</span>
+<span class="fc" id="L68">                output.append(allFinishedMessage);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            } else if (finished == 0) {</span>
+<span class="fc" id="L70">                output.append(&quot; &quot;).append(noFinishedMessage);</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">            } else if (finished &lt; total) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">                if (finished &gt;= total / 2) {</span>
+<span class="fc" id="L73">                    output.append(&quot; &quot;).append(halfFinishedMessage);</span>
                 } else {
-<span class="fc" id="L74">                    output += someFinishedMessage;</span>
+<span class="fc" id="L75">                    output.append(someFinishedMessage);</span>
                 }
             } else {
-<span class="nc" id="L77">                output += someFinishedMessage;</span>
+<span class="nc" id="L78">                output.append(someFinishedMessage);</span>
             }
         }
 
-<span class="fc" id="L81">        log.debug(&quot;Resulting output: {}&quot;, output);</span>
+<span class="fc" id="L82">        log.debug(&quot;Resulting output: {}&quot;, output.toString());</span>
 
-<span class="fc" id="L83">        return output;</span>
+<span class="fc" id="L84">        return output.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

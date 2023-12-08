@@ -54,9 +54,9 @@ import java.util.NoSuchElementException;
 
     @PostMapping(&quot;/list&quot;)
     public String newItem(@Valid TodoItemForm todoItemForm, BindingResult bindingResult) {
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L58">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
-<span class="nc" id="L59">            return &quot;list&quot;;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L58">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
+<span class="fc" id="L59">            return &quot;list&quot;;</span>
         }
 
 <span class="fc" id="L62">        TodoListDto saved = todoListService.addTodoItem(todoItemForm);</span>
@@ -68,16 +68,16 @@ import java.util.NoSuchElementException;
     @PostMapping(&quot;/list/{id}&quot;)
     public String newItem(@PathVariable(&quot;id&quot;) Long id, @Valid TodoItemForm todoItemForm,
                           BindingResult bindingResult, Model model) {
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L72">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L72">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
 
-<span class="nc" id="L74">            TodoListDto foundTodoList = todoListService.getTodoListById(id);</span>
-<span class="nc" id="L75">            log.debug(&quot;Show list with ID {}&quot;, foundTodoList.id());</span>
+<span class="fc" id="L74">            TodoListDto foundTodoList = todoListService.getTodoListById(id);</span>
+<span class="fc" id="L75">            log.debug(&quot;Show list with ID {}&quot;, foundTodoList.id());</span>
 
-<span class="nc" id="L77">            model.addAttribute(&quot;todoList&quot;, foundTodoList);</span>
-<span class="nc" id="L78">            model.addAttribute(&quot;motivationMessage&quot;, motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));</span>
+<span class="fc" id="L77">            model.addAttribute(&quot;todoList&quot;, foundTodoList);</span>
+<span class="fc" id="L78">            model.addAttribute(&quot;motivationMessage&quot;, motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));</span>
 
-<span class="nc" id="L80">            return &quot;list&quot;;</span>
+<span class="fc" id="L80">            return &quot;list&quot;;</span>
         }
 
 <span class="fc" id="L83">        TodoListDto saved = todoListService.addTodoItem(id, todoItemForm);</span>
