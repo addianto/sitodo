@@ -2,10 +2,7 @@
 name: Reporting
 
 on:
-  workflow_run:
-    types: [completed]
-    workflows:
-      - BDD
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -38,6 +35,8 @@ jobs:
           mv tmp/surefire-jacoco-reports/jacoco target/site/jacoco
           mv tmp/serenity-reports/serenity target/site/serenity
           cp .github/pages/index.html target/site/index.html
+      - run: ls tmp/
+      - run: ls -R target/site
       - name: Publish test reports
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
