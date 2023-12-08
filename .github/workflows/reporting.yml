@@ -21,24 +21,18 @@ jobs:
         with:
           branch: main
           name: surefire-jacoco-reports
-          path: tmp
+          path: target/site
           workflow: ci.yml
       - name: Download BDD test reports
         uses: dawidd6/action-download-artifact@v2.9.0
         with:
           branch: main
           name: serenity-reports
-          path: tmp
+          path: target/site/serenity
           workflow: bdd.yml
-      - name: Organise test reports
+      - name: Add top-level test reporting page
         run: |
-          mkdir -p target/site
-          mv tmp/surefire-jacoco-reports/surefire target/site/surefire
-          mv tmp/surefire-jacoco-reports/jacoco target/site/jacoco
-          mv tmp/serenity-reports/serenity target/site/serenity
           cp .github/pages/index.html target/site/index.html
-      - run: ls tmp/
-      - run: ls -R target/site
       - name: Publish test reports
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
