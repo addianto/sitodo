@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TodoListController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sitodo</a> &gt; <a href="index.source.html" class="el_package">com.example.sitodo.controller</a> &gt; <span class="el_source">TodoListController.java</span></div><h1>TodoListController.java</h1><pre class="source lang-java linenums">package com.example.sitodo.controller;
+
+import com.example.sitodo.dto.TodoListDto;
+import com.example.sitodo.form.TodoItemForm;
+import com.example.sitodo.service.MotivationMessageService;
+import com.example.sitodo.service.TodoListService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.NoSuchElementException;
+
+@Controller
+<span class="fc" id="L18">@Slf4j</span>
+<span class="fc" id="L19">public class TodoListController {</span>
+
+    private TodoListService todoListService;
+
+    private MotivationMessageService motivationMessageService;
+
+    @Autowired
+    public void setTodoListService(TodoListService todoListService) {
+<span class="fc" id="L27">        this.todoListService = todoListService;</span>
+<span class="fc" id="L28">    }</span>
+
+    @Autowired
+    public void setMotivationMessageService(MotivationMessageService motivationMessageService) {
+<span class="fc" id="L32">        this.motivationMessageService = motivationMessageService;</span>
+<span class="fc" id="L33">    }</span>
+
+    @GetMapping(&quot;/list&quot;)
+    public String showList(Model model) {
+<span class="fc" id="L37">        model.addAttribute(&quot;todoItemForm&quot;, new TodoItemForm());</span>
+<span class="fc" id="L38">        model.addAttribute(&quot;motivationMessage&quot;, motivationMessageService.computeMotivationMessage(0, 0));</span>
+
+<span class="fc" id="L40">        return &quot;list&quot;;</span>
+    }
+
+    @GetMapping(&quot;/list/{id}&quot;)
+    public String showList(@PathVariable(&quot;id&quot;) Long id, Model model) {
+<span class="fc" id="L45">        TodoListDto foundTodoList = todoListService.getTodoListById(id);</span>
+<span class="fc" id="L46">        log.debug(&quot;Show list with ID {}&quot;, foundTodoList.id());</span>
+
+<span class="fc" id="L48">        model.addAttribute(&quot;todoList&quot;, foundTodoList);</span>
+<span class="fc" id="L49">        model.addAttribute(&quot;todoItemForm&quot;, new TodoItemForm());</span>
+<span class="fc" id="L50">        model.addAttribute(&quot;motivationMessage&quot;, motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));</span>
+
+<span class="fc" id="L52">        return &quot;list&quot;;</span>
+    }
+
+    @PostMapping(&quot;/list&quot;)
+    public String newItem(@Valid TodoItemForm todoItemForm, BindingResult bindingResult) {
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
+<span class="nc" id="L58">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
+<span class="nc" id="L59">            return &quot;list&quot;;</span>
+        }
+
+<span class="fc" id="L62">        TodoListDto saved = todoListService.addTodoItem(todoItemForm);</span>
+<span class="fc" id="L63">        log.debug(&quot;Saved a new item into a new list (ID: {})&quot;, saved.id());</span>
+
+<span class="fc" id="L65">        return redirectToList(saved.id());</span>
+    }
+
+    @PostMapping(&quot;/list/{id}&quot;)
+    public String newItem(@PathVariable(&quot;id&quot;) Long id, @Valid TodoItemForm todoItemForm,
+                          BindingResult bindingResult, Model model) {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
+<span class="nc" id="L72">            bindingResult.getAllErrors().forEach(error -&gt; log.warn(error.toString()));</span>
+
+<span class="nc" id="L74">            TodoListDto foundTodoList = todoListService.getTodoListById(id);</span>
+<span class="nc" id="L75">            log.debug(&quot;Show list with ID {}&quot;, foundTodoList.id());</span>
+
+<span class="nc" id="L77">            model.addAttribute(&quot;todoList&quot;, foundTodoList);</span>
+<span class="nc" id="L78">            model.addAttribute(&quot;motivationMessage&quot;, motivationMessageService.computeMotivationMessage(foundTodoList.countTotal(), foundTodoList.countFinishedItems()));</span>
+
+<span class="nc" id="L80">            return &quot;list&quot;;</span>
+        }
+
+<span class="fc" id="L83">        TodoListDto saved = todoListService.addTodoItem(id, todoItemForm);</span>
+<span class="fc" id="L84">        log.debug(&quot;Saved a new item into a list (ID {})&quot;, saved.id());</span>
+
+<span class="fc" id="L86">        return redirectToList(saved.id());</span>
+    }
+
+    @GetMapping(&quot;/list/{list_id}/update/{item_id}&quot;)
+    public String updateItem(@PathVariable(&quot;list_id&quot;) Long listId,
+                             @PathVariable(&quot;item_id&quot;) Long itemId,
+                             @RequestParam(&quot;finished&quot;) Boolean finished) {
+<span class="fc" id="L93">        TodoListDto updated = todoListService.setTodoItemFinished(listId, itemId, finished);</span>
+<span class="fc" id="L94">        log.debug(&quot;Updated an item in a list with ID {}&quot;, updated.id());</span>
+
+<span class="fc" id="L96">        return redirectToList(updated.id());</span>
+    }
+
+    @ExceptionHandler
+    public String handleException(NoSuchElementException exception) {
+<span class="fc" id="L101">        return &quot;404&quot;;</span>
+    }
+
+    private String redirectToList(Long id) {
+<span class="fc" id="L105">        return String.format(&quot;redirect:/list/%d&quot;, id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

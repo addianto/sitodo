@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Add items into the todo list" skipped="0" tests="2" time="6.85" timestamp="2023-12-08 12:38:43"><testcase name="Add single item into the list"/><testcase name="Add multiple items into the list"/></testsuite>
