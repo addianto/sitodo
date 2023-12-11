@@ -11,19 +11,14 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 
 import java.util.List;
 
-public class AddItemStepDefinitions {
+public class MarkItemStepDefinitions {
 
-    @Given("{actor} is looking at the list")
-    public void actor_is_looking_at_her_todo_list(Actor actor) {
-        actor.wasAbleTo(NavigateTo.theTodoListPage());
-    }
-
-    @When("{actor} adds {string} to the list")
+    @When("{actor} marks {string} as Finished")
     public void she_adds_to_the_list(Actor actor, String itemName) {
         actor.attemptsTo(AddAnItem.withName(itemName));
     }
 
-    @Then("{actor} sees {string} as an item in the list")
+    @Then("{actor} sees {string} as Finished")
     public void she_sees_as_an_item_in_the_todo_list(Actor actor, String expectedItemName) {
         List<String> todoItems = TodoListPage.ITEMS_LIST.resolveAllFor(actor)
                                                         .textContents();
