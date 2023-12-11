@@ -1,31 +1,45 @@
 package com.example.sitodo.bdd.stepdefinitions;
 
-import com.example.sitodo.bdd.helpers.AddAnItem;
-import com.example.sitodo.bdd.helpers.NavigateTo;
 import com.example.sitodo.bdd.helpers.TodoListPage;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import org.openqa.selenium.By;
 
-import java.util.List;
+import java.util.Optional;
 
 public class MarkItemStepDefinitions {
 
     @When("{actor} marks {string} as Finished")
-    public void she_adds_to_the_list(Actor actor, String itemName) {
-        actor.attemptsTo(AddAnItem.withName(itemName));
+    public void marks_item_as_finished(Actor actor, String itemName) {
+        Optional<WebElementFacade> foundRow = TodoListPage
+            .ITEMS_ROWS.resolveAllFor(actor)
+            .stream()
+            .filter(element -> element.containsText(itemName))
+            .findFirst();
+
+        WebElementFacade row = foundRow.orElseThrow();
+        WebElementFacade link = row.findBy(By.className("sitodo-finish-link"));
+
+        actor.attemptsTo(Click.on(link));
     }
 
     @Then("{actor} sees {string} as Finished")
-    public void she_sees_as_an_item_in_the_todo_list(Actor actor, String expectedItemName) {
-        List<String> todoItems = TodoListPage.ITEMS_LIST.resolveAllFor(actor)
-                                                        .textContents();
+    public void sees_item_as_finished(Actor actor, String itemName) {
+        Optional<WebElementFacade> foundRow = TodoListPage
+            .ITEMS_ROWS.resolveAllFor(actor)
+            .stream()
+            .filter(element -> element.containsText(itemName))
+            .findFirst();
+
+        WebElementFacade row = foundRow.orElseThrow();
 
         actor.attemptsTo(
-            Ensure.that(todoItems)
-                  .contains(expectedItemName)
+            Ensure.that(row.getText()).contains(itemName),
+            Ensure.that(row.getText()).contains("Finished")
         );
     }
 }
