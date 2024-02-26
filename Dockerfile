@@ -1,4 +1,4 @@
-ARG JAVA_VERSION="17"
+ARG JAVA_VERSION="21"
 
 FROM docker.io/library/eclipse-temurin:${JAVA_VERSION}-jdk-alpine AS builder
 
