@@ -27,7 +27,7 @@
 		<serenity.version>4.0.27</serenity.version>
 		<selenium.version>4.12.1</selenium.version>
 		<surefire.version>3.1.2</surefire.version>
-		<failsafe.version>3.1.2</failsafe.version>
+		<failsafe.version>3.4.0</failsafe.version>
 		<tags></tags>
 	</properties>
 	<dependencies>
