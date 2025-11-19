@@ -1,0 +1,26 @@
+[Unit]
+Description=Sitodo - Simple Todo Application
+After=network.target
+
+[Service]
+Type=simple
+User=app
+Group=app
+WorkingDirectory=/opt/sitodo
+ExecStart=/usr/bin/java -jar /opt/sitodo/bin/sitodo.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sitodo
+
+# Environment configuration
+EnvironmentFile=/opt/sitodo/config/app.env
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
