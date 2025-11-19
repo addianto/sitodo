@@ -72,6 +72,16 @@ You can customise the configuration by providing an `application.properties`
 file in the same directory as the executable JAR file. See the built-in
 configuration in the [source code](./src/main/resources/application.properties).
 
+## Deployment
+
+For production deployment as a systemd service on a Linux VM, see the
+[Deployment Guide](DEPLOYMENT.md). The guide includes:
+- Automated deployment script
+- systemd service configuration
+- User and directory setup
+- Configuration management
+- Service management commands
+
 ## Running Example
 
 See the running example based on the main branch at [Heroku](https://sitodo-example.herokuapp.com).
