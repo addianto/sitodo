@@ -86,12 +86,12 @@ echo ""
 # Test 7: Verify systemd service file content
 echo "Test 7: Systemd service file validation"
 SERVICE_FILE="${SCRIPT_DIR}/sitodo.service"
-REQUIRED_DIRECTIVES=("User=app" "ExecStart=" "SuccessExitStatus=143" "Restart=always" "EnvironmentFile=")
+REQUIRED_DIRECTIVES=("User=@@APP_USER@@" "ExecStart=" "SuccessExitStatus=143" "Restart=always" "EnvironmentFile=")
 for directive in "${REQUIRED_DIRECTIVES[@]}"; do
     if grep -q "$directive" "$SERVICE_FILE"; then
-        echo "✓ Service file contains: ${directive}"
+        echo "✓ Service file template contains: ${directive}"
     else
-        echo "✗ Service file missing: ${directive}"
+        echo "✗ Service file template missing: ${directive}"
         exit 1
     fi
 done

@@ -4,19 +4,19 @@ After=network.target
 
 [Service]
 Type=simple
-User=app
-Group=app
-WorkingDirectory=/opt/sitodo
-ExecStart=/usr/bin/java -jar /opt/sitodo/bin/sitodo.jar
+User=@@APP_USER@@
+Group=@@APP_GROUP@@
+WorkingDirectory=@@APP_HOME@@
+ExecStart=/usr/bin/java -jar @@TARGET_JAR@@
 SuccessExitStatus=143
 Restart=always
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=sitodo
+SyslogIdentifier=@@APP_NAME@@
 
 # Environment configuration
-EnvironmentFile=/opt/sitodo/config/app.env
+EnvironmentFile=@@ENV_FILE@@
 
 # Security hardening
 NoNewPrivileges=true

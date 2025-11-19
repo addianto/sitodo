@@ -182,34 +182,24 @@ log_info "JAR file deployed successfully"
 #####################################################################
 log_info "Step 7: Setting up systemd service..."
 
-cat > "$SERVICE_FILE" << EOF
-[Unit]
-Description=Sitodo - Simple Todo Application
-After=network.target
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TEMPLATE_FILE="${SCRIPT_DIR}/sitodo.service"
 
-[Service]
-Type=simple
-User=${APP_USER}
-Group=${APP_GROUP}
-WorkingDirectory=${APP_HOME}
-ExecStart=/usr/bin/java -jar ${TARGET_JAR}
-SuccessExitStatus=143
-Restart=always
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
-SyslogIdentifier=${APP_NAME}
+# Check if template file exists
+if [ ! -f "$TEMPLATE_FILE" ]; then
+    log_error "Template file not found: $TEMPLATE_FILE"
+    exit 1
+fi
 
-# Environment configuration
-EnvironmentFile=${ENV_FILE}
-
-# Security hardening
-NoNewPrivileges=true
-PrivateTmp=true
-
-[Install]
-WantedBy=multi-user.target
-EOF
+# Copy template and substitute variables
+sed -e "s|@@APP_USER@@|${APP_USER}|g" \
+    -e "s|@@APP_GROUP@@|${APP_GROUP}|g" \
+    -e "s|@@APP_HOME@@|${APP_HOME}|g" \
+    -e "s|@@TARGET_JAR@@|${TARGET_JAR}|g" \
+    -e "s|@@APP_NAME@@|${APP_NAME}|g" \
+    -e "s|@@ENV_FILE@@|${ENV_FILE}|g" \
+    "$TEMPLATE_FILE" > "$SERVICE_FILE"
 
 log_info "Systemd service file created at $SERVICE_FILE"
 
